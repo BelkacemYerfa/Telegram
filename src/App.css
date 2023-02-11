@@ -1,38 +1,26 @@
-.App {
-  text-align: center;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@layer{
+ .ChatBody{
+  @apply h-[100vh] w-1/4 bg-UserListBg/70 text-white font-semibold px-[19.5px] py-[15.5px]
+ }
+ .ChatTitle{
+  @apply flex w-fit justify-center gap-x-[13.5px]
+ }
+ .Menu{
+  @apply cursor-pointer
+ }
+ .SearchForm{
+  @apply flex w-full justify-center px-[11px] py-[5px] 
+  font-normal text-sm bg-SearchInputBg rounded border-b
+  border-solid border-white !important
+ }
+ .SearchInput{
+  @apply w-full bg-transparent outline-none 
+ }
+ .SearchHodlerIcon{
+  @apply rotate-90 font-thin !important
+ }
 }
