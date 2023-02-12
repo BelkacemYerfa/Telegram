@@ -2,9 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar{
+ width: 2px;
+}
+
+::-webkit-scrollbar-thumb{
+ background-color: rgba(255, 255, 255, 0.5442);
+ border-radius: 9999px;
+}
+
 @layer{
+ .App {
+  @apply bg-bannerImage bg-cover bg-no-repeat bg-center
+ }
  .ChatBody{
-  @apply h-[100vh] w-1/4 bg-UserListBg/70 text-white font-semibold px-[19.5px] py-[15.5px]
+  @apply fill-white h-[100vh] w-[30%] bg-UserListBg/80 text-white font-semibold px-[19.5px] py-[15.5px]
  }
  .ChatTitle{
   @apply flex w-fit justify-center gap-x-[13.5px]
@@ -22,5 +34,33 @@
  }
  .SearchHodlerIcon{
   @apply rotate-90 font-thin !important
+ }
+ .UserListHolder{
+  @apply flex flex-col w-full h-full overflow-y-auto
+ }
+
+ /* user Component */
+ .UserComponent{
+  @apply flex items-end w-full py-[10px] gap-x-[10px] 
+  cursor-pointer hover:bg-SearchInputBg rounded 
+  duration-300 ease-in-out outline-none px-2 !important
+ }
+ .UserComponentInfo{
+  @apply w-full
+ }
+ .userImagePic{
+  @apply h-[50px] w-auto rounded-[50%] !important
+ }
+ .UserInfo{
+  @apply flex justify-between items-center !important
+ }
+ .Username{
+  @apply font-semibold text-[15px] !important
+ }
+ .UserLastMessageTime{
+  @apply font-normal text-sm text-MessagesTime !important
+ }
+ .UserLastMessage{
+  @apply font-normal text-sm text-LattestMessageColor !important
  }
 }

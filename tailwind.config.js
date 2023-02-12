@@ -4,8 +4,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        UserListBg : 'rgba(0, 0, 0, 0.25)' ,
+        UserListBg : '#202020' ,
         SearchInputBg : 'rgba(255, 255, 255, 0.0605)', 
+        testBg : '#E5E5E5' , 
+        MessagesTime : '#838383',
+        LattestMessageColor : '#888888',
+      } , 
+      backgroundImage : {
+        bannerImage : 'url(https://4kwallpapers.com/images/wallpapers/windows-11-dark-mode-blue-stock-official-3840x2400-5630.jpg)'
       }
     },
   },
