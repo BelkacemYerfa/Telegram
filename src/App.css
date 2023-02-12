@@ -41,21 +41,32 @@
 
  /* user Component */
  .UserComponent{
-  @apply flex items-end w-full py-[10px] gap-x-[10px] 
+  @apply relative flex items-end w-full py-[10px] gap-x-[10px] 
   cursor-pointer hover:bg-SearchInputBg rounded 
   duration-300 ease-in-out outline-none px-2 !important
+ }
+ .SelectedDiscussion{
+  @apply h-7 w-[3px] rounded-full bg-SelecteDiscussionBg 
+  absolute left-0 top-[20px] !important
+ }
+ .UserOnlineComponent{
+  @apply relative
  }
  .UserComponentInfo{
   @apply w-full
  }
  .userImagePic{
-  @apply h-[50px] w-auto rounded-[50%] !important
+  @apply h-[50px] w-[60px] rounded-[50%] !important
+ }
+ .UserOnlineChecker{
+  @apply h-[10px] w-[10px] rounded-full bg-green-500 
+  absolute bottom-[2px] right-[2px] !important
  }
  .UserInfo{
   @apply flex justify-between items-center !important
  }
  .Username{
-  @apply font-semibold text-[15px] !important
+  @apply flex gap-x-[5px] items-center font-semibold text-[15px] !important
  }
  .UserLastMessageTime{
   @apply font-normal text-sm text-MessagesTime !important

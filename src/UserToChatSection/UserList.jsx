@@ -1,85 +1,8 @@
-import { useState } from "react"
+import { useDataLayervValue } from "../Config/dataLayer"
 import { UserComponent } from "../UserComponents/UserMessaginChat"
 
 export const UserList = ()=>{
- const [users, setUsers] = useState([{
-  name: "リムル゠テンペスト",
-  lastMessage: "Hello",
-  lastMessageTime: "12:00",
-  profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
-  id: `${crypto.randomUUID()}`
- },
- {
-  name: "リムル゠テンペスト",
-  lastMessage: "Hello",
-  lastMessageTime: "12:00",
-  profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
-  id: `${crypto.randomUUID()}`
- },
- {
-  name: "リムル゠テンペスト",
-  lastMessage: "Hello",
-  lastMessageTime: "12:00",
-  profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
-  id: `${crypto.randomUUID()}`
- },
- {
-  name: "リムル゠テンペスト",
-  lastMessage: "Hello",
-  lastMessageTime: "12:00",
-  profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
-  id: `${crypto.randomUUID()}`
- },
- {
-  name: "リムル゠テンペスト",
-  lastMessage: "Hello",
-  lastMessageTime: "12:00",
-  profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
-  id: `${crypto.randomUUID()}`
- },
- {
-  name: "リムル゠テンペスト",
-  lastMessage: "Hello",
-  lastMessageTime: "12:00",
-  profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
-  id: `${crypto.randomUUID()}`
- },
- {
-  name: "リムル゠テンペスト",
-  lastMessage: "Hello",
-  lastMessageTime: "12:00",
-  profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
-  id: `${crypto.randomUUID()}`
- },
- {
-  name: "リムル゠テンペスト",
-  lastMessage: "Hello",
-  lastMessageTime: "12:00",
-  profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
-  id: `${crypto.randomUUID()}`
- },
- {
-  name: "リムル゠テンペスト",
-  lastMessage: "Hello",
-  lastMessageTime: "12:00",
-  profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
-  id: `${crypto.randomUUID()}`
- },
- {
-  name: "リムル゠テンペスト",
-  lastMessage: "Hello",
-  lastMessageTime: "12:00",
-  profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
-  id: `${crypto.randomUUID()}`
- },
- {
-  name: "リムル゠テンペスト",
-  lastMessage: "Hello",
-  lastMessageTime: "12:00",
-  profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
-  id: `${crypto.randomUUID()}`
- },
-])
+ const [{userFriends} , dispatch] = useDataLayervValue()
  return (
   <div className="UserListHolder" >
    <div className="ChatTitle">
@@ -101,13 +24,16 @@ export const UserList = ()=>{
    <br />
    <div className="UserListHolder" >
       {
-        users.map( user => (
+        userFriends.map( user => (
           <UserComponent  
            photoURL={user?.profilePic}
            name={user?.name}
            lastMessage={user?.lastMessage}
            lastMessageTime={user?.lastMessageTime}
-           userId={user?.id} 
+           userId={user?.id}
+           OnlineStatus={user?.OnlineStatus} 
+           Selected={user?.Selected}
+           Members={user?.Members}
           />
         ))
       }

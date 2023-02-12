@@ -559,7 +559,181 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.text-red-300 {
-  --tw-text-opacity: 1;
-  color: rgb(252 165 165 / var(--tw-text-opacity));
+::-webkit-scrollbar{
+  width: 2px;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: rgba(255, 255, 255, 0.5442);
+  border-radius: 9999px;
+}
+
+@layer{
+  .App {
+    background-image: url(https://4kwallpapers.com/images/wallpapers/windows-11-dark-mode-blue-stock-official-3840x2400-5630.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .ChatBody {
+    height: 100vh;
+    width: 30%;
+    background-color: rgb(32 32 32 / 0.8);
+    fill: #fff;
+    padding-left: 19.5px;
+    padding-right: 19.5px;
+    padding-top: 15.5px;
+    padding-bottom: 15.5px;
+    font-weight: 600;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+
+  .ChatTitle {
+    display: flex;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    justify-content: center;
+    -webkit-column-gap: 13.5px;
+            column-gap: 13.5px;
+  }
+
+  .Menu {
+    cursor: pointer;
+  }
+
+  .SearchForm {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    border-radius: 0.25rem !important;
+    border-bottom-width: 1px !important;
+    border-style: solid !important;
+    --tw-border-opacity: 1 !important;
+    border-color: rgb(255 255 255 / var(--tw-border-opacity)) !important;
+    background-color: rgba(255, 255, 255, 0.0605) !important;
+    padding-left: 11px !important;
+    padding-right: 11px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+    font-weight: 400 !important;
+  }
+
+  .SearchInput {
+    width: 100%;
+    background-color: transparent;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  .SearchHodlerIcon {
+    --tw-rotate: 90deg !important;
+    -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+    font-weight: 100 !important;
+  }
+
+  .UserListHolder {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  /* user Component */
+
+  .UserComponent {
+    position: relative !important;
+    display: flex !important;
+    width: 100% !important;
+    cursor: pointer !important;
+    align-items: flex-end !important;
+    -webkit-column-gap: 10px !important;
+            column-gap: 10px !important;
+    border-radius: 0.25rem !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    outline: 2px solid transparent !important;
+    outline-offset: 2px !important;
+    transition-duration: 300ms !important;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .UserComponent:hover {
+    background-color: rgba(255, 255, 255, 0.0605) !important;
+  }
+
+  .SelectedDiscussion {
+    position: absolute !important;
+    left: 0px !important;
+    top: 20px !important;
+    height: 1.75rem !important;
+    width: 3px !important;
+    border-radius: 9999px !important;
+    --tw-bg-opacity: 1 !important;
+    background-color: rgb(96 205 255 / var(--tw-bg-opacity)) !important;
+  }
+
+  .UserOnlineComponent {
+    position: relative;
+  }
+
+  .UserComponentInfo {
+    width: 100%;
+  }
+
+  .userImagePic {
+    height: 50px !important;
+    width: 60px !important;
+    border-radius: 50% !important;
+  }
+
+  .UserOnlineChecker {
+    position: absolute !important;
+    bottom: 2px !important;
+    right: 2px !important;
+    height: 10px !important;
+    width: 10px !important;
+    border-radius: 9999px !important;
+    --tw-bg-opacity: 1 !important;
+    background-color: rgb(34 197 94 / var(--tw-bg-opacity)) !important;
+  }
+
+  .UserInfo {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .Username {
+    display: flex !important;
+    align-items: center !important;
+    -webkit-column-gap: 5px !important;
+            column-gap: 5px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+  }
+
+  .UserLastMessageTime {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+    font-weight: 400 !important;
+    --tw-text-opacity: 1 !important;
+    color: rgb(131 131 131 / var(--tw-text-opacity)) !important;
+  }
+
+  .UserLastMessage {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+    font-weight: 400 !important;
+    --tw-text-opacity: 1 !important;
+    color: rgb(136 136 136 / var(--tw-text-opacity)) !important;
+  }
 }
