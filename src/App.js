@@ -1,12 +1,15 @@
+import { BrowserRouter, Routes , Route } from 'react-router-dom';
+import { ChatComponent } from './AllChats/ChatComponent';
 import './App.css';
-import { UserList } from './UserToChatSection/UserList';
 
 function App() {
   return (
     <div className="App">
-      <div className='ChatBody' >
-        <UserList />
-      </div>
+      <BrowserRouter>
+       <Routes>
+         <Route path='/hello' element={<ChatComponent />} />
+       </Routes>
+      </BrowserRouter>
     </div>
   );
 }

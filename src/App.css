@@ -15,8 +15,11 @@
  .App {
   @apply bg-bannerImage bg-cover bg-no-repeat bg-center
  }
+ .Chat{
+  @apply flex w-full !important
+ }
  .ChatBody{
-  @apply fill-white h-[100vh] w-[30%] bg-UserListBg/80 text-white font-semibold px-[19.5px] py-[15.5px]
+  @apply fill-white h-[100vh] w-[28%] bg-UserListBg/80 text-white font-semibold px-[19.5px] py-[15.5px]
  }
  .ChatTitle{
   @apply flex w-fit justify-center gap-x-[13.5px]
@@ -30,7 +33,7 @@
   border-solid border-white !important
  }
  .SearchInput{
-  @apply w-full bg-transparent outline-none 
+  @apply w-full bg-transparent outline-none border-none
  }
  .SearchHodlerIcon{
   @apply rotate-90 font-thin !important
@@ -73,5 +76,11 @@
  }
  .UserLastMessage{
   @apply font-normal text-sm text-LattestMessageColor !important
+ }
+
+ /* chat messaging component */
+ .ChatRoom{
+  @apply bg-UserListBg/80 h-full w-full
+  text-white font-medium !important
  }
 }

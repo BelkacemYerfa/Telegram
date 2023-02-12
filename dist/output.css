@@ -578,7 +578,7 @@ video {
 
   .ChatBody {
     height: 100vh;
-    width: 30%;
+    width: 28%;
     background-color: rgb(32 32 32 / 0.8);
     fill: #fff;
     padding-left: 19.5px;
@@ -625,6 +625,7 @@ video {
 
   .SearchInput {
     width: 100%;
+    border-style: none;
     background-color: transparent;
     outline: 2px solid transparent;
     outline-offset: 2px;
