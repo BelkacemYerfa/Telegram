@@ -6,7 +6,7 @@ export let initialState = {
   uid : '111',
  } ,
  userFriends : [{
-  name: "リムル゠テンペスト",
+  name: "リムル・テンペスト",
   lastMessage: "Hello",
   lastMessageTime: "12:00",
   profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
@@ -19,14 +19,14 @@ export let initialState = {
    profilePic: "https://wallpaperaccess.com/full/4595683.jpg" ,
   } ,
   {
-   name: "リムル゠テンペスト",
+   name: "リムル・テンペスト",
    id: `${crypto.randomUUID()}`,
    profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" ,
   }
  ]
  },
  {
-  name: "リムル゠テンペスト",
+  name: "リムル・テンペスト",
   lastMessage: "Hello",
   lastMessageTime: "12:00",
   profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
@@ -39,14 +39,14 @@ export let initialState = {
    profilePic: "https://wallpaperaccess.com/full/4595683.jpg" ,
   } ,
   {
-   name: "リムル゠テンペスト",
+   name: "リムル・テンペスト",
    id: `${crypto.randomUUID()}`,
    profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" ,
   }
  ]
  },
  {
-  name: "リムル゠テンペスト",
+  name: "リムル・テンペスト",
   lastMessage: "Hello",
   lastMessageTime: "12:00",
   profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
@@ -59,7 +59,7 @@ export let initialState = {
    profilePic: "https://wallpaperaccess.com/full/4595683.jpg" ,
   } ,
   {
-   name: "リムル゠テンペスト",
+   name: "リムル・テンペスト",
    id: `${crypto.randomUUID()}`,
    profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" ,
   }
@@ -74,17 +74,17 @@ export let initialState = {
   OnlineStatus : false ,
   Selected : false ,
   Members : [{
-   name: "リムル゠テンペスト",
+   name: "リムル・テンペスト",
    id: `${crypto.randomUUID()}`,
    profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" ,
   } ,
   {
-   name: "リムル゠テンペスト",
+   name: "リムル・テンペスト",
    id: `${crypto.randomUUID()}`,
    profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" ,
   } ,
   {
-   name: "リムル゠テンペスト",
+   name: "リムル・テンペスト",
    id: `${crypto.randomUUID()}`,
    profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" ,
   }

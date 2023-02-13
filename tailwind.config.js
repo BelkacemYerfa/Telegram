@@ -12,6 +12,8 @@ module.exports = {
         SelecteDiscussionBg : '#60CDFF',
         ChatOptionsBg : 'rgba(255, 255, 255, 0.07)',
         ChatOptionsHoverBg : '#0F80D7',
+        ChatMessagingComponent : 'rgba(255, 255, 255, 0.0512)' , 
+        MessaginInputTextColor:'rgba(255, 255, 255, 0.5442)',
       } , 
       backgroundImage : {
         bannerImage : 'url(https://4kwallpapers.com/images/wallpapers/windows-11-dark-mode-blue-stock-official-3840x2400-5630.jpg)'
