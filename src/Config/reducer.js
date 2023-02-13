@@ -7,7 +7,7 @@ export let initialState = {
  } ,
  userFriends : [{
   name: "リムル・テンペスト",
-  lastMessage: "Hello",
+  lastMessage: "Hello , how are you buddy ?",
   lastMessageTime: "12:00",
   profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
   id: `${crypto.randomUUID()}`,

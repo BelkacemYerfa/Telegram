@@ -14,12 +14,31 @@
 @layer{
  .App {
   @apply bg-bannerImage bg-cover bg-no-repeat bg-center
+  flex 
+ }
+ .NavBar{
+  @apply bg-UserListBg/80 flex flex-col text-[12px]
+  items-center text-white font-normal w-fit !important
+ }
+ .NavComponentsOptions{
+  @apply  w-full p-2
+ }
+ .ChatOptionSelector{
+  @apply flex flex-col items-center justify-center h-16 w-16
+  duration-300 ease-in-out hover:bg-ChatOptionBg 
+  rounded cursor-pointer
+ }
+ .ChatOptionHolderIcon{
+  @apply flex items-center justify-center
+ }
+ .ChatGPTPic{
+  @apply h-9 w-9 rounded !important
  }
  .Chat{
   @apply flex w-full !important
  }
  .ChatBody{
-  @apply fill-white h-[100vh] w-1/3 bg-UserListBg/80 text-white font-semibold px-[19.5px] py-[15.5px]
+  @apply fill-white h-[100vh] w-[40%] bg-UserListBg/80 text-white font-semibold px-[19.5px] py-[15.5px]
  }
  .ChatTitle{
   @apply flex w-fit justify-center gap-x-[13.5px]
@@ -75,7 +94,8 @@
   @apply font-normal text-sm text-MessagesTime !important
  }
  .UserLastMessage{
-  @apply font-normal text-sm text-LattestMessageColor !important
+  @apply font-normal text-sm text-LattestMessageColor 
+  truncate w-[200px]
  }
 
  /* chat messaging component */
@@ -84,11 +104,13 @@
   text-white font-medium !important
  }
  .SelectedComponent{
-  @apply flex items-center justify-center h-full w-full !important
+  @apply flex items-center justify-center h-full 
+  w-full !important
  }
  .SelectChat{
   @apply flex items-center justify-center bg-MessagingComponentBg
-  py-2 px-[11px] text-white rounded-[17px] cursor-pointer !important
+  py-2 px-[11px] text-white rounded-[17px] cursor-pointer font-medium
+  text-sm !important
  }
  .ChatMessaginComponent{
   @apply w-full
