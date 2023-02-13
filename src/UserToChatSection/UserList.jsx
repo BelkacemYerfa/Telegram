@@ -26,6 +26,7 @@ export const UserList = ()=>{
       {
         userFriends.map( user => (
           <UserComponent  
+           key={user?.id}
            photoURL={user?.profilePic}
            name={user?.name}
            lastMessage={user?.lastMessage}

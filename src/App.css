@@ -83,6 +83,13 @@
   @apply bg-UserListBg/80 flex flex-col h-full 
   text-white font-medium !important
  }
+ .SelectedComponent{
+  @apply flex items-center justify-center h-full w-full !important
+ }
+ .SelectChat{
+  @apply flex items-center justify-center bg-MessagingComponentBg
+  py-2 px-[11px] text-white rounded-[17px] cursor-pointer !important
+ }
  .ChatMessaginComponent{
   @apply w-full
  }
@@ -98,9 +105,14 @@
  .userImage{
   @apply h-[50px] w-[50px] rounded-[50%] !important
  }
+ .Online , .RoomMembers {
+  @apply text-sm font-normal cursor-pointer !important
+ }
+ .Online{
+  @apply text-ChatOptionsHoverBg 
+ }
  .RoomMembers{
-  @apply text-sm font-normal text-LattestMessageColor
-  cursor-pointer !important
+  @apply text-LattestMessageColor
  }
  .MessaginOptions{
   @apply flex gap-x-5 items-center justify-center
@@ -118,7 +130,7 @@
  }
  .MessageForm{
   @apply flex items-center justify-between w-full rounded-lg
-  bg-ChatMessagingComponent p-[13px] !important
+  bg-ChatMessagingComponent py-1 px-[13px] !important
  }
  .UserFilesWithMessaging , .EmojiHolderWithVocal{
   @apply flex items-center gap-x-2

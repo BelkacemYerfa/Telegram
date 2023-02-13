@@ -9,7 +9,7 @@ export const UserComponent = ({
  userId , 
  OnlineStatus ,
  Selected , 
- Members
+ Members , 
 }) => {
  const [{userFriends} , dispatch] = useDataLayervValue();
  const handleSelectedConversation = () => {

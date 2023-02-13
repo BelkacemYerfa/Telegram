@@ -32,7 +32,7 @@ export let initialState = {
   profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
   id: `${crypto.randomUUID()}`,
   OnlineStatus : true , 
-  Selected : true ,
+  Selected : false ,
   Members : [{
    name: "Bylka",
    id: '111',
