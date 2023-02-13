@@ -7,7 +7,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
        <Routes>
-         <Route path='/hello' element={<ChatComponent />} />
+         <Route path='/' element={<ChatComponent />} />
+         <Route path='/Groupes' element={<ChatComponent />} />
+         <Route path='/AskAI' element={<ChatComponent />}/>
        </Routes>
       </BrowserRouter>
     </div>
