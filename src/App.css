@@ -187,4 +187,25 @@
  .FilesInput{
   @apply hidden 
  }
+ .ChatMessaging{
+  @apply p-[13px]
+ }
+ .MessagesHolder{
+  @apply h-full w-full flex flex-col gap-y-4 overflow-y-scroll text-sm 
+  font-normal !important
+ }
+ .MessageComponentUser{
+  @apply w-full flex justify-end !important
+ }
+ .MessageComponentUserFriend{
+  @apply w-full flex justify-start !important
+ }
+ .UserMessage{
+  @apply w-fit flex items-center gap-x-2 bg-UserMessageBg
+  rounded-l-[14px]  py-[10px] px-2
+ }
+ .FriendUserMessage{
+  @apply w-fit flex items-center gap-x-2 bg-UserFriendMessageBg
+  rounded-r-[14px] py-[10px] px-2
+ }
 }

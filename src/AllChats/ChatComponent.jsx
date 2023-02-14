@@ -11,7 +11,7 @@ export const ChatComponent = ({
 
  return (
   <div className="Chat" >
-   <div className='ChatBody' >
+   <div className='ChatBody'>
      <UserList 
       handleToggle={handleToggleNavBar}
      />
