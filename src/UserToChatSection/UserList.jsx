@@ -1,17 +1,27 @@
-import { useDataLayervValue } from "../Config/dataLayer"
-import { UserComponent } from "../UserComponents/UserMessaginChat"
+import { useDataLayervValue } from "../Config/dataLayer";
+import { UserComponent } from "../UserComponents/UserMessaginChat";
+import { useState } from "react";
 
-export const UserList = ()=>{
- const [{userFriends} , dispatch] = useDataLayervValue()
+export const UserList = ({
+  handleToggle , 
+})=>{
+ const [{userFriends}] = useDataLayervValue();
+ const [Toggle , setToggle] = useState(false);
+
+ const HandleToggle = ()=>{
+  setToggle(!Toggle);
+  handleToggle(Toggle);
+ }
+ 
  return (
-  <div className="UserListHolder" >
+  <div className="UserList" >
    <div className="ChatTitle">
-    <div className="Menu" >
-     <span className="material-symbols-rounded">
+    <div className="Menu" onClick={HandleToggle} >
+     <span className="material-symbols-rounded" >
       menu
      </span>
     </div>
-    Chats
+    <p>Chats</p>
    </div>
    <form action="" className="SearchForm" >
     <input id="search" className="SearchInput" type="search" placeholder="Search" />

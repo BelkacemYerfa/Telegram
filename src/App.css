@@ -48,7 +48,7 @@
   @apply flex w-fit justify-center gap-x-[13.5px]
  }
  .Menu{
-  @apply cursor-pointer
+  @apply sticky left-0 cursor-pointer
  }
  .SearchForm{
   @apply flex w-full justify-center px-[11px] py-[5px] 
