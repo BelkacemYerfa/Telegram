@@ -20,7 +20,8 @@ module.exports = {
       } , 
       backgroundImage : {
         bannerImage : 'url(https://4kwallpapers.com/images/wallpapers/windows-11-dark-mode-blue-stock-official-3840x2400-5630.jpg)'
-      }
+      } , 
+      visibility: ["group-hover"],
     },
   },
   plugins: [],

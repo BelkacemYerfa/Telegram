@@ -1,4 +1,5 @@
-import { useDataLayervValue } from "../Config/dataLayer"
+import { useDataLayervValue } from "../Config/dataLayer";
+import { Link } from "react-router-dom";
 
 
 export const UserComponent = ({
@@ -26,17 +27,13 @@ export const UserComponent = ({
  })
 }
  return (
-  <div className="UserComponent" id={userId}
+  <Link className="UserComponent group" id={userId}
    onClick={handleSelectedConversation}
    style={{
     backgroundColor: Selected ? "rgba(255, 255, 255, 0.0605)" : "transparent"
    }}
   >
-    {
-     Selected ? (
-      <div className="SelectedDiscussion" ></div>
-     ) : null
-    }
+    <div className="SelectedDiscussion" ></div>
     <div className="UserOnlineComponent" >
      <img className="userImagePic" src={photoURL} alt="userPicture" />
      {
@@ -66,6 +63,6 @@ export const UserComponent = ({
       </p>
      </div>
     </div>
-  </div>
+  </Link>
  )
 }

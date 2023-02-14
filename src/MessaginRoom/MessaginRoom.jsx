@@ -6,14 +6,15 @@ export const MessagingRoom = () => {
   const [{userFriends}] = useDataLayervValue();
   const [SelectedUser , setSelectedUser] = useState(null);
   const handleSelectedUser = ()=>{
-    for(let i = 0; i < userFriends.length; i++){
-      if(userFriends[i].Selected === true){
-        setSelectedUser(userFriends[i]);
+    userFriends.forEach( user => {
+      if(user.Selected === true){
+        setSelectedUser(user);
       }
-    }
+      return user;
+    })
   }
   useEffect(()=>{
-    handleSelectedUser()
+    handleSelectedUser();
   })
 
  return(

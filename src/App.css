@@ -24,12 +24,16 @@
   @apply  w-full p-2
  }
  .ChatOptionSelector{
-  @apply flex flex-col items-center justify-center h-16 w-16
+  @apply relative flex flex-col items-center 
+  justify-center h-16 w-16 focus:bg-ChatOptionsBg
   duration-300 ease-in-out hover:bg-ChatOptionBg 
-  rounded cursor-pointer
+  rounded cursor-pointer !important
  }
  .ChatOptionHolderIcon{
-  @apply flex items-center justify-center
+  @apply flex items-center justify-center 
+ }
+ .Icon{
+  @apply group-focus:stroke-ChatOptionsHoverBg !important
  }
  .ChatGPTPic{
   @apply h-9 w-9 rounded !important
@@ -63,13 +67,23 @@
 
  /* user Component */
  .UserComponent{
-  @apply relative flex items-end w-full py-[10px] gap-x-[10px] 
+  @apply relative flex items-center w-full py-[10px] gap-x-[10px] 
   cursor-pointer hover:bg-SearchInputBg rounded 
   duration-300 ease-in-out outline-none px-2 !important
  }
  .SelectedDiscussion{
-  @apply h-7 w-[3px] rounded-full bg-SelecteDiscussionBg 
-  absolute left-0 top-[20px] !important
+  @apply h-0 w-[3px] rounded-full bg-SelecteDiscussionBg 
+  absolute left-0 top-[20px] duration-300 ease-in-out
+  group-focus:h-7 
+ }
+ .SelectedType{
+  @apply duration-200 ease-in-out h-0 top-[25px] 
+  group-focus:h-4
+  w-[3px] rounded-full bg-SelecteDiscussionBg 
+  absolute left-0  
+ }
+ .chatItem{
+  @apply group-focus:text-ChatOptionsHoverBg
  }
  .UserOnlineComponent{
   @apply relative
@@ -78,7 +92,7 @@
   @apply w-full
  }
  .userImagePic{
-  @apply h-[45px] w-[60px] rounded-[50%] !important
+  @apply h-[45px] w-[55px] rounded-[50%] !important
  }
  .UserOnlineChecker{
   @apply h-[10px] w-[10px] rounded-full bg-green-500 
