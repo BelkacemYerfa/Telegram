@@ -2,35 +2,18 @@
 
 Telegram-Clone is a web-chat-application
 
-<svg width="1620" height="960" viewBox="0 0 1620 960" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_b_124_13182)">
-<rect width="1620" height="960" fill="black" fill-opacity="0.01"/>
-</g>
-<defs>
-<filter id="filter0_b_124_13182" x="-200" y="-200" width="2020" height="1360" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feGaussianBlur in="BackgroundImageFix" stdDeviation="100"/>
-<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_124_13182"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_124_13182" result="shape"/>
-</filter>
-</defs>
-</svg>
-
+![Telegram-Clone](image.png)
 
 
 ## 🎯 Main Features
 
-✅ Works offline
+✅ Chat with every friend in your List
 
-✅ Bookmark a page to easily go back to it
-
-✅ Easily navigate with Surah's index page & Juz index page
+🔜 Changing the style of the the app (colors , font , backgrounds)
 
 ✅ Dark mode
 
-✅ Continue on the page you left off
-
-🔜 Search for Ayah (comming soon)
+🔜 Ask Chat GPT in the app about anySubject you Have
 
 ## ⚙ Installation steps
 
