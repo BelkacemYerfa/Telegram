@@ -2,7 +2,7 @@
 
 Telegram-Clone is a web-chat-application
 
-![Telegram-Clone](<svg width="1620" height="960" viewBox="0 0 1620 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1620" height="960" viewBox="0 0 1620 960" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_b_124_13182)">
 <rect width="1620" height="960" fill="black" fill-opacity="0.01"/>
 </g>
@@ -15,7 +15,7 @@ Telegram-Clone is a web-chat-application
 </filter>
 </defs>
 </svg>
-)
+
 
 
 ## 🎯 Main Features
