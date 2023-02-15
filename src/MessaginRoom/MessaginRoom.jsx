@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 export const MessagingRoom = () => {
 
-  const [{userFriends}] = useDataLayervValue();
+  const [{userFriends , user}] = useDataLayervValue();
   const [SelectedUser , setSelectedUser] = useState(null);
   const handleSelectedUser = ()=>{
     userFriends.forEach( user => {
@@ -15,8 +15,7 @@ export const MessagingRoom = () => {
   }
   useEffect(()=>{
     handleSelectedUser();
-  })
-
+  });
  return(
   <div className="ChatRoom" >
     {
@@ -77,26 +76,61 @@ export const MessagingRoom = () => {
         </div>
           <div className="ChatMessaging" >
             <div className="MessagesHolder" >
-              <div className="MessageComponentUser" >
-                <div className="UserMessage" >
-                  <div className="MessageInfo" >
-                    And what is cool - they have a menu for it in sidebar!
-                  </div>
-                  <div className="MessageTime">
-                      10:30 AM
-                  </div>
-                </div>
-              </div>
-              <div className="MessageComponentUserFriend" >
-                <div className="FriendUserMessage" >
-                  <div className="MessageInfo" >
-                    What do u think about creating some additional screens for our case?  
-                  </div>
-                  <div className="MessageTime">
-                      10:30 AM
-                  </div>
-                </div>
-              </div>
+              { 
+              SelectedUser?.Messages?.map(message => (
+                <>
+                 {
+                   message?.id === user?.uid ? (
+                    <div className="MessageComponentUser" >
+                    <div className="UserMessage" id={message?.id} >
+                      <div className="MessageInfo" >
+                        {
+                          message?.message
+                        }
+                      </div>
+                      <div className="MessageTime">
+                          {
+                            message?.time > 12 
+                            ? `${Number(message?.time) - 12}:${message?.timeMinutes} PM` 
+                            : `${Number(message?.time) - 12}:$${message?.timeMinutes} AM`
+                          }
+                      </div>
+                    </div>
+                    {
+                       SelectedUser?.Members?.length > 2 ? (
+                        <img className="profilePicConverstaion"
+                        src={message?.profilePic} alt="userprofileImage" />
+                       ) : null
+                     }
+                  </div> 
+                   ) : (
+                    <div className="MessageComponentUserFriend" >
+                      {
+                       SelectedUser?.Members?.length > 2 ? (
+                        <img className="profilePicConverstaion" 
+                        src={message?.profilePic} alt="userprofileImage" />
+                       ) : null
+                     }
+                      <div className="bg-UserFriendMessageBg FriendUserMessage" >
+                        <div className="MessageInfo" >
+                         {
+                            message?.message
+                         }
+                        </div>
+                        <div className="MessageTime">
+                          {
+                            message?.time > 12 
+                            ? `${Number(message?.time) - 12}:${message?.timeMinutes} PM` 
+                            : `${Number(message?.time) - 12}:$${message?.timeMinutes} AM`
+                          }
+                        </div>
+                      </div>
+                    </div>
+                   )
+                 }
+                </>
+              ))
+              }
             </div>
           </div>
           <div className="UserMessageComponent" >

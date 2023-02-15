@@ -15,7 +15,7 @@ export let initialState = {
   Selected : false ,
   Members : [{
    name: "Bylka",
-   id: '111',
+   id: `${crypto.randomUUID()}`,
    profilePic: "https://wallpaperaccess.com/full/4595683.jpg" ,
   } ,
   {
@@ -23,7 +23,24 @@ export let initialState = {
    id: `${crypto.randomUUID()}`,
    profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" ,
   }
- ]
+ ] , 
+ Messages : [{
+  name : 'Bylka' ,
+  id : '111' ,
+  message : 'Hello , how are you buddy ?' ,
+  time : `${new Date().getHours()}` ,
+  timeMinutes : `${new Date().getMinutes()}` ,
+  profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
+ }, 
+ {
+  name : 'リムル・テンペスト' ,
+  id: `${crypto.randomUUID()}`,
+  message : 'Hello , I am fine , and you ?' ,
+  time : `${new Date().getHours()}` ,
+  timeMinutes : `${new Date().getMinutes()}` ,
+  profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
+ }
+]
  },
  {
   name: "リムル・テンペスト",
@@ -43,7 +60,24 @@ export let initialState = {
    id: `${crypto.randomUUID()}`,
    profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" ,
   }
- ]
+ ],
+ Messages : [{
+  name : 'Bylka' ,
+  id : '111' ,
+  message : 'Hello , how are you buddy ?' ,
+  time : `${new Date().getHours()}` ,
+  timeMinutes : `${new Date().getMinutes()}` ,
+  profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
+ }, 
+ {
+  name : 'リムル・テンペスト' ,
+  id: `${crypto.randomUUID()}`,
+  message : 'Hello , I am fine , and you ?' ,
+  time : `${new Date().getHours()}` ,
+  timeMinutes : `${new Date().getMinutes()}` ,
+  profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
+ }
+]
  },
  {
   name: "リムル・テンペスト",
@@ -63,7 +97,24 @@ export let initialState = {
    id: `${crypto.randomUUID()}`,
    profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" ,
   }
- ]
+ ],
+ Messages : [{
+  name : 'Bylka' ,
+  id : '111' ,
+  message : 'Hello , how are you buddy ?' ,
+  time : `${new Date().getHours()}` ,
+  timeMinutes : `${new Date().getMinutes()}` ,
+  profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
+ }, 
+ {
+  name : 'リムル・テンペスト' ,
+  id: `${crypto.randomUUID()}`,
+  message : 'Hello , I am fine , and you ?' ,
+  time : `${new Date().getHours()}` ,
+  timeMinutes : `${new Date().getMinutes()}` ,
+  profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
+ }
+]
  },
  {
   name: 'Groupe 1',
@@ -88,7 +139,24 @@ export let initialState = {
    id: `${crypto.randomUUID()}`,
    profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" ,
   }
- ]
+ ],
+ Messages : [{
+  name : 'Bylka' ,
+  id : '111' ,
+  message : 'Hello , how are you buddy ?' ,
+  time : `${new Date().getHours()}` ,
+  timeMinutes : `${new Date().getMinutes()}` ,
+  profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
+ }, 
+ {
+  name : 'リムル・テンペスト' ,
+  id: `${crypto.randomUUID()}`,
+  message : 'Hello , I am fine , and you ?' ,
+  time : `${new Date().getHours()}` ,
+  timeMinutes : `${new Date().getMinutes()}` ,
+  profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
+ }
+]
  }
 ]
 }

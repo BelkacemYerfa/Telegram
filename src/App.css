@@ -94,6 +94,9 @@
  .userImagePic{
   @apply h-[45px] w-[55px] rounded-[50%] !important
  }
+ .profilePicConverstaion{
+  @apply cursor-pointer h-[35px] w-auto rounded-[50%] !important
+ }
  .UserOnlineChecker{
   @apply h-[10px] w-[10px] rounded-full bg-green-500 
   absolute bottom-[2px] right-[2px] !important
@@ -196,20 +199,21 @@
   font-normal !important
  }
  .MessageComponentUser{
-  @apply w-full flex justify-end !important
+  @apply w-full flex justify-end items-end gap-x-[7px] !important
  }
  .MessageComponentUserFriend{
-  @apply w-full flex justify-start !important
+  @apply w-full flex justify-start items-end gap-x-[7px] !important
  }
+ 
  .UserMessage{
-  @apply max-w-[60%] flex items-end gap-x-2 bg-UserMessageBg
+  @apply cursor-pointer max-w-[60%] flex items-end gap-x-2 bg-UserMessageBg
   rounded-l-[14px] rounded-tr-[14px] rounded-br-md  py-[10px] px-2
  }
  .MessageTime{
-  @apply w-[15%] text-[12px] font-[350] text-[#A1AAB3]
+  @apply w-[20%] text-[12px] font-[350] text-[#A1AAB3]
  }
  .FriendUserMessage{
-  @apply max-w-[60%] flex items-end gap-x-2 bg-UserFriendMessageBg
+  @apply cursor-pointer max-w-[60%] flex items-end gap-x-2 bg-UserFriendMessageBg
   rounded-r-[14px] rounded-tl-[14px] rounded-bl-md py-[10px] px-2
  }
 }

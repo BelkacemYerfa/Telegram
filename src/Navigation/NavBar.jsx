@@ -9,7 +9,7 @@ export const NavBar = () => {
  const HandleStrockeColorFalse = ()=>{
   setSelectedChat(false)
  }
- const [SelectedGroup , setSelectedGroup] = useState([
+ const [SelectedGroup] = useState([
  {
    id : `${crypto.randomUUID()}`,
    Tag : 'All chats',
