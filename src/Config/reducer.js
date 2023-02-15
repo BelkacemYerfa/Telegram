@@ -168,6 +168,10 @@ export const reducer = (state , action)=>{
     ...state , 
     user : action.user 
    }
+   case 'SET_USER_NEW_MESSAGE' : return {
+    ...state ,
+    userFriends : action.userFriends
+   }
    case 'SET_USER_FRIENDS' : return {
     ...state ,
     userFriends : action.userFriends

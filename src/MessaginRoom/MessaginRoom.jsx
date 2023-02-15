@@ -3,14 +3,32 @@ import { useEffect, useState } from "react";
 
 export const MessagingRoom = () => {
 
-  const [{userFriends , user}] = useDataLayervValue();
+  const [{userFriends , user} , dispatch] = useDataLayervValue();
   const [SelectedUser , setSelectedUser] = useState(null);
+  const [UserMessage , SetUserMessage] = useState(null);
   const handleSelectedUser = ()=>{
     userFriends.forEach( user => {
       if(user.Selected === true){
         setSelectedUser(user);
       }
       return user;
+    })
+  }
+  const handleUserMessage = ()=>{
+    userFriends.forEach( friend => {
+      if(friend?.id === SelectedUser?.id){
+        friend?.Messages?.push({
+          id: `${user?.uid}`,
+          message: UserMessage,
+          time: new Date().getHours(),
+          timeMinutes: new Date().getMinutes(),
+          profilePic: friend?.profilePic
+        })
+      }
+     })
+     dispatch({
+      type: 'SET_USER_NEW_MESSAGE',
+      userFriends : userFriends
     })
   }
   useEffect(()=>{
@@ -144,7 +162,20 @@ export const MessagingRoom = () => {
                 <path d="M11.7717 3.74358C14.1132 1.4 17.9121 1.4 20.2553 3.74314C22.5384 6.02621 22.5969 9.69142 20.4309 12.0454L20.2428 12.2427L11.4427 21.0409L11.4062 21.0712C9.94492 22.3879 7.69092 22.3432 6.28355 20.9358C4.96453 19.6168 4.84241 17.5541 5.9172 16.0974C5.94054 16.0521 5.96879 16.0083 6.002 15.9672L6.05556 15.9075L6.14247 15.8198L6.28355 15.6719L6.28647 15.6748L13.7222 8.22047C13.9881 7.95385 14.4047 7.92909 14.6986 8.14656L14.7829 8.21906C15.0495 8.48497 15.0742 8.9016 14.8568 9.19551L14.7843 9.27972L7.18966 16.8928C6.47202 17.7684 6.5219 19.0627 7.3393 19.8801C8.16836 20.7091 9.48801 20.7486 10.3638 19.9985L19.1965 11.1681C20.952 9.41041 20.952 6.56116 19.1946 4.8038C17.4922 3.10136 14.765 3.04816 12.9986 4.6442L12.8307 4.8038L12.8181 4.81812L3.28179 14.3544C2.9889 14.6473 2.51403 14.6473 2.22113 14.3544C1.95487 14.0882 1.93066 13.6715 2.14852 13.3779L2.22113 13.2938L11.77 3.74314L11.7717 3.74358Z" fill="#8A8A8A"/>
                 </svg>
               </label>
-              <input type="text" className="MessageInput" placeholder="Write a message..."  />
+              <input type="text" className="MessageInput" placeholder="Write a message..." 
+                onKeyDown={(event)=>{
+                 if(event.key === 'Enter'){
+                   event.preventDefault();
+                   handleUserMessage()
+                 }
+                }}
+                onChange={(e)=>{
+                  e.preventDefault();
+                  if(e.target.value !== '' || null ){
+                    SetUserMessage(e.target.value);
+                  }
+                }}
+              />
               </div>
               <div className="EmojiHolderWithVocal" >
                 <div className="MessageOption" >
