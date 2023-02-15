@@ -79,22 +79,22 @@ export const MessagingRoom = () => {
             <div className="MessagesHolder" >
               <div className="MessageComponentUser" >
                 <div className="UserMessage" >
-                <div className="MessageInfo" >
-                  And what is cool - they have a menu for it in sidebar!
-                </div>
-                <div className="MessageTime">
-                    10:30 AM
-                </div>
+                  <div className="MessageInfo" >
+                    And what is cool - they have a menu for it in sidebar!
+                  </div>
+                  <div className="MessageTime">
+                      10:30 AM
+                  </div>
                 </div>
               </div>
               <div className="MessageComponentUserFriend" >
                 <div className="FriendUserMessage" >
-                <div className="MessageInfo" >
-                  What do u think about creating some additional screens for our case?  
-                </div>
-                <div className="MessageTime">
-                    10:30 AM
-                </div>
+                  <div className="MessageInfo" >
+                    What do u think about creating some additional screens for our case?  
+                  </div>
+                  <div className="MessageTime">
+                      10:30 AM
+                  </div>
                 </div>
               </div>
             </div>
