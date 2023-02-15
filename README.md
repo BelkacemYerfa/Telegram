@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Telegram-Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Telegram-Clone is a web-chat-application
 
-## Available Scripts
+![Telegram-Clone](<svg width="1620" height="960" viewBox="0 0 1620 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_b_124_13182)">
+<rect width="1620" height="960" fill="black" fill-opacity="0.01"/>
+</g>
+<defs>
+<filter id="filter0_b_124_13182" x="-200" y="-200" width="2020" height="1360" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="100"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_124_13182"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_124_13182" result="shape"/>
+</filter>
+</defs>
+</svg>
+)
 
-In the project directory, you can run:
 
-### `npm start`
+## 🎯 Main Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+✅ Works offline
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+✅ Bookmark a page to easily go back to it
 
-### `npm test`
+✅ Easily navigate with Surah's index page & Juz index page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+✅ Dark mode
 
-### `npm run build`
+✅ Continue on the page you left off
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+🔜 Search for Ayah (comming soon)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ⚙ Installation steps
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If you want to get the full project:
 
-### `npm run eject`
+```
+git clone https://github.com/BelkacemYerfa/Telegram
+npm i && npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🎨 Figma Project
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+There is also a free Figma project for this app.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You can check it out from here: https://www.figma.com/file/7nFSBvDiXYA3olcgZyfJSh/Telegram-for-Windows-11-(Community)?node-id=115%3A6455&t=KpDNl65jX5QRMa3f-0
 
-## Learn More
+## 🔨 Used packages
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ReactJs, TailwindCss, UseContextApi, State Managment, gsap-react.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you liked this project then kindly support it by giving it a star ⭐!
