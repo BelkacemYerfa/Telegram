@@ -193,8 +193,13 @@
  .ChatMessaging{
   @apply p-[13px]
  }
+ /* note : later add te functionality of sending multi messages for a user and 
+  making some speacial style for all the messages , 
+  you can use the id of the user that send it to check if the message is for this user or not
+  
+ */
  .MessagesHolder{
-  @apply h-[70vh] w-full flex flex-col gap-y-4
+  @apply h-[70vh] w-full flex flex-col gap-y-1
   overflow-y-scroll text-sm px-[13px] py-1
   font-normal !important
  }
@@ -205,8 +210,8 @@
   @apply w-full flex justify-start items-end gap-x-[7px] !important
  }
  .UserMessage{
-  @apply cursor-pointer max-w-[70%] flex items-end gap-x-2 bg-UserMessageBg
-  rounded-l-[14px] rounded-tr-[14px] rounded-br-md  py-[10px] px-2
+  @apply cursor-pointer max-w-[70%] flex items-end 
+  gap-x-2 bg-UserMessageBg py-[10px] px-2
  }
  .MessageInfo{
   @apply break-all !important
@@ -215,7 +220,7 @@
   @apply w-[15%] text-[12px] font-[350] text-[#A1AAB3]
  }
  .FriendUserMessage{
-  @apply cursor-pointer max-w-[70%] flex items-end gap-x-2 bg-UserFriendMessageBg
-  rounded-r-[14px] rounded-tl-[14px] rounded-bl-md py-[10px] px-2
+  @apply cursor-pointer max-w-[70%] flex items-end 
+  gap-x-2 bg-UserFriendMessageBg py-[10px] px-2
  }
 }
