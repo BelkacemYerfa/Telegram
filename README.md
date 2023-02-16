@@ -22,14 +22,14 @@ If you want to get the full project:
 ```
 git clone https://github.com/BelkacemYerfa/Telegram
 npm i && npm start
-
 ```
 
 ## 🎨 Figma Project
 
 There is also a free Figma project for this app.
 
-You can check it out from here: https://www.figma.com/file/7nFSBvDiXYA3olcgZyfJSh/Telegram-for-Windows-11-(Community)?node-id=115%3A6455&t=KpDNl65jX5QRMa3f-0
+You can check it out from here: 
+ https://www.figma.com/file/7nFSBvDiXYA3olcgZyfJSh/Telegram-for-Windows-11-(Community)?node-id=115%3A6455&t=KpDNl65jX5QRMa3f-0
 
 ## 🔨 Used packages
 

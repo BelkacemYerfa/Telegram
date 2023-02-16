@@ -1,18 +1,19 @@
 import { useDataLayervValue } from "../Config/dataLayer";
 import { Link } from "react-router-dom";
-
+import { useEffect, useState } from "react";
 
 export const UserComponent = ({
  photoURL , 
  name ,
- lastMessage ,
- lastMessageTime , 
  userId , 
  OnlineStatus ,
  Selected , 
  Members , 
 }) => {
  const [{userFriends} , dispatch] = useDataLayervValue();
+ const [Message , setMessage] = useState(null);
+ const [LastMessageTime , setLastMessageTime] = useState(null);
+ 
  const handleSelectedConversation = () => {
   for(let i=0; i<userFriends.length; i++){
    if(userFriends[i].id === userId){
@@ -20,13 +21,44 @@ export const UserComponent = ({
    }else{
     userFriends[i].Selected = false;
    }
- }
- dispatch({
-  type: "SET_USER_FRIENDS",
-  userFriends: userFriends
- })
-}
- return (
+  }
+  dispatch({
+    type: "SET_USER_FRIENDS",
+    userFriends: userFriends
+  })
+  }
+  const getLastMessageTime = ()=>{
+    if(userFriends.length > 0) {
+      userFriends.forEach(friend => {
+        if(userId === friend.id){
+          if(friend.Messages.length > 0){
+           setLastMessageTime({
+            hour : friend?.Messages[friend?.Messages.length - 1]?.time , 
+            minute : friend?.Messages[friend?.Messages.length - 1]?.timeMinutes
+           })
+          } 
+        }
+      })
+    }
+  }
+  const getLastMessage = ()=>{
+   if(userFriends.length > 0) {
+    userFriends.forEach(friend => {
+      if(userId === friend.id){
+        if(friend.Messages.length > 0){
+          setMessage(friend.Messages[friend.Messages.length - 1].message)
+        } 
+      }
+    })
+   }
+  }
+  
+  useEffect(()=>{
+    getLastMessageTime();
+    getLastMessage();
+  })
+
+  return (
   <Link className="UserComponent group" id={userId}
    onClick={handleSelectedConversation}
    style={{
@@ -54,12 +86,23 @@ export const UserComponent = ({
        {name}
       </p>
       <p className="UserLastMessageTime" >
-       {lastMessageTime}
+       {
+        Number(LastMessageTime?.hour) > 12 ? 
+        `${LastMessageTime?.hour - 12}:${Number(LastMessageTime?.minute)<10 ? 
+        `0${LastMessageTime?.minute}` : `${LastMessageTime?.minute}`
+        } PM`
+        :
+        `${LastMessageTime?.hour}:${Number(LastMessageTime?.minute)<10 ? 
+        `0${LastMessageTime?.minute}` : `${LastMessageTime?.minute}`
+        } AM`
+       }
       </p>
      </div>
      <div className="UserLastMessageComponent" >
       <p className="UserLastMessage" >
-       {lastMessage}
+       {
+        Message
+       }
       </p>
      </div>
     </div>

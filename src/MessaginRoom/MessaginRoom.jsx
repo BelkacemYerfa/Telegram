@@ -22,7 +22,7 @@ export const MessagingRoom = () => {
           message: UserMessage,
           time: new Date().getHours(),
           timeMinutes: new Date().getMinutes(),
-          profilePic: friend?.profilePic
+          profilePic: user?.photoURL
         })
       }
      })
@@ -100,7 +100,15 @@ export const MessagingRoom = () => {
                  {
                    message?.id === user?.uid ? (
                     <div className="MessageComponentUser" >
-                    <div className="UserMessage" id={message?.id} >
+                    <div className="UserMessage" id={message?.id}
+                     style={{
+                      borderRadius : message?.id === user?.uid 
+                      && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.id === user?.uid
+                      ? SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.id === user?.uid 
+                      && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) - 1]?.id !== user?.uid
+                      ? "14px 14px 4px 14px" : "14px 4px 4px 14px" : "14px 4px 14px 14px"
+                     }}
+                    >
                       <div className="MessageInfo" >
                         {
                           message?.message
@@ -109,17 +117,19 @@ export const MessagingRoom = () => {
                       <div className="MessageTime">
                           {
                             message?.time > 12 
-                            ? `${Number(message?.time) - 12}:${message?.timeMinutes} PM` 
-                            : `${Number(message?.time) - 12}:$${message?.timeMinutes} AM`
+                            ? `${Number(message?.time) - 12}:${
+                              message?.timeMinutes < 10 ? 
+                              `0${message?.timeMinutes}`
+                              : message?.timeMinutes 
+                            }PM` 
+                            : `${Number(message?.time)}:${
+                              message?.timeMinutes < 10 ? 
+                              `0${message?.timeMinutes}`
+                              : message?.timeMinutes 
+                            }AM`
                           }
                       </div>
                     </div>
-                    {
-                       SelectedUser?.Members?.length > 2 ? (
-                        <img className="profilePicConverstaion"
-                        src={message?.profilePic} alt="userprofileImage" />
-                       ) : null
-                     }
                   </div> 
                    ) : (
                     <div className="MessageComponentUserFriend" >
@@ -129,7 +139,15 @@ export const MessagingRoom = () => {
                         src={message?.profilePic} alt="userprofileImage" />
                        ) : null
                      }
-                      <div className="bg-UserFriendMessageBg FriendUserMessage" >
+                      <div className="FriendUserMessage"
+                       style={{
+                        borderRadius : message?.id === user?.uid 
+                        && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.id === user?.uid
+                        ? SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.id === user?.uid 
+                        && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) - 1]?.id !== user?.uid
+                        ? "14px 14px 14px 4px" : "4px 14px 14px 4px" : "4px 14px 14px 14px"
+                       }}
+                      >
                         <div className="MessageInfo" >
                          {
                             message?.message
@@ -138,8 +156,16 @@ export const MessagingRoom = () => {
                         <div className="MessageTime">
                           {
                             message?.time > 12 
-                            ? `${Number(message?.time) - 12}:${message?.timeMinutes} PM` 
-                            : `${Number(message?.time) - 12}:$${message?.timeMinutes} AM`
+                            ? `${Number(message?.time) - 12}:${
+                              message?.timeMinutes < 10 ? 
+                              `0${message?.timeMinutes}`
+                              : message?.timeMinutes 
+                            }PM` 
+                            : `${Number(message?.time)}:${
+                              message?.timeMinutes < 10 ? 
+                              `0${message?.timeMinutes}`
+                              : message?.timeMinutes 
+                            }AM`
                           }
                         </div>
                       </div>
