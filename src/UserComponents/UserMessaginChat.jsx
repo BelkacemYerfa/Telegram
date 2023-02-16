@@ -10,6 +10,7 @@ export const UserComponent = ({
  Selected , 
  Members , 
 }) => {
+  
  const [{userFriends} , dispatch] = useDataLayervValue();
  const [Message , setMessage] = useState(null);
  const [LastMessageTime , setLastMessageTime] = useState(null);
@@ -33,8 +34,8 @@ export const UserComponent = ({
         if(userId === friend.id){
           if(friend.Messages.length > 0){
            setLastMessageTime({
-            hour : friend?.Messages[friend?.Messages.length - 1]?.time , 
-            minute : friend?.Messages[friend?.Messages.length - 1]?.timeMinutes
+            hour : Number(friend?.Messages[friend?.Messages.length - 1]?.time) , 
+            minute : Number(friend?.Messages[friend?.Messages.length - 1]?.timeMinutes)
            })
           } 
         }
@@ -56,7 +57,7 @@ export const UserComponent = ({
   useEffect(()=>{
     getLastMessageTime();
     getLastMessage();
-  })
+  } ,[])
 
   return (
   <Link className="UserComponent group" id={userId}
@@ -87,14 +88,13 @@ export const UserComponent = ({
       </p>
       <p className="UserLastMessageTime" >
        {
-        Number(LastMessageTime?.hour) > 12 ? 
-        `${LastMessageTime?.hour - 12}:${Number(LastMessageTime?.minute)<10 ? 
-        `0${LastMessageTime?.minute}` : `${LastMessageTime?.minute}`
-        } PM`
+        LastMessageTime?.hour > 12 ? 
+        `${LastMessageTime?.hour - 12}:${LastMessageTime?.minute < 10 ? 
+          `0${LastMessageTime?.minute}` 
+          : LastMessageTime?.minute } 
+        PM`
         :
-        `${LastMessageTime?.hour}:${Number(LastMessageTime?.minute)<10 ? 
-        `0${LastMessageTime?.minute}` : `${LastMessageTime?.minute}`
-        } AM`
+        `${LastMessageTime?.hour}`
        }
       </p>
      </div>

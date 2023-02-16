@@ -11,7 +11,6 @@ export const MessagingRoom = () => {
       if(user.Selected === true){
         setSelectedUser(user);
       }
-      return user;
     })
   }
   const handleUserMessage = ()=>{
@@ -33,7 +32,7 @@ export const MessagingRoom = () => {
   }
   useEffect(()=>{
     handleSelectedUser();
-  });
+  } );
  return(
   <div className="ChatRoom" >
     {
@@ -192,7 +191,8 @@ export const MessagingRoom = () => {
                 onKeyDown={(event)=>{
                  if(event.key === 'Enter'){
                    event.preventDefault();
-                   handleUserMessage()
+                   handleUserMessage();
+                   event.target.value = '';
                  }
                 }}
                 onChange={(e)=>{
