@@ -22,7 +22,7 @@ export const MessagingRoom = () => {
           message: UserMessage,
           time: new Date().getHours(),
           timeMinutes: new Date().getMinutes(),
-          profilePic: friend?.profilePic
+          profilePic: user?.photoURL
         })
       }
      })
@@ -109,8 +109,12 @@ export const MessagingRoom = () => {
                       <div className="MessageTime">
                           {
                             message?.time > 12 
-                            ? `${Number(message?.time) - 12}:${message?.timeMinutes} PM` 
-                            : `${Number(message?.time) - 12}:$${message?.timeMinutes} AM`
+                            ? `${Number(message?.time) - 12}:${message?.timeMinutes}PM` 
+                            : `${Number(message?.time)}:${
+                              message?.timeMinutes < 10 ? 
+                              '0'+message?.timeMinutes 
+                              : message?.timeMinutes 
+                            }AM`
                           }
                       </div>
                     </div>
@@ -138,8 +142,12 @@ export const MessagingRoom = () => {
                         <div className="MessageTime">
                           {
                             message?.time > 12 
-                            ? `${Number(message?.time) - 12}:${message?.timeMinutes} PM` 
-                            : `${Number(message?.time) - 12}:$${message?.timeMinutes} AM`
+                            ? `${Number(message?.time) - 12}:${message?.timeMinutes}PM` 
+                            : `${Number(message?.time)}:${
+                              message?.timeMinutes < 10 ? 
+                              '0'+message?.timeMinutes 
+                              : message?.timeMinutes 
+                            }AM`
                           }
                         </div>
                       </div>

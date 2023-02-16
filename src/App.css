@@ -195,7 +195,7 @@
  }
  .MessagesHolder{
   @apply h-[70vh] w-full flex flex-col gap-y-4
-  overflow-y-scroll text-sm 
+  overflow-y-scroll text-sm px-[13px] py-1
   font-normal !important
  }
  .MessageComponentUser{
@@ -204,16 +204,18 @@
  .MessageComponentUserFriend{
   @apply w-full flex justify-start items-end gap-x-[7px] !important
  }
- 
  .UserMessage{
-  @apply cursor-pointer max-w-[60%] flex items-end gap-x-2 bg-UserMessageBg
+  @apply cursor-pointer max-w-[70%] flex items-end gap-x-2 bg-UserMessageBg
   rounded-l-[14px] rounded-tr-[14px] rounded-br-md  py-[10px] px-2
  }
+ .MessageInfo{
+  @apply break-all !important
+ }
  .MessageTime{
-  @apply w-[20%] text-[12px] font-[350] text-[#A1AAB3]
+  @apply w-[15%] text-[12px] font-[350] text-[#A1AAB3]
  }
  .FriendUserMessage{
-  @apply cursor-pointer max-w-[60%] flex items-end gap-x-2 bg-UserFriendMessageBg
+  @apply cursor-pointer max-w-[70%] flex items-end gap-x-2 bg-UserFriendMessageBg
   rounded-r-[14px] rounded-tl-[14px] rounded-bl-md py-[10px] px-2
  }
 }

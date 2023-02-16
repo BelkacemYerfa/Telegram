@@ -7,8 +7,6 @@ export let initialState = {
  } ,
  userFriends : [{
   name: "リムル・テンペスト",
-  lastMessage: "Hello , how are you buddy ?",
-  lastMessageTime: "12:00",
   profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
   id: `${crypto.randomUUID()}`,
   OnlineStatus : false , 
@@ -44,8 +42,6 @@ export let initialState = {
  },
  {
   name: "リムル・テンペスト",
-  lastMessage: "Hello",
-  lastMessageTime: "12:00",
   profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
   id: `${crypto.randomUUID()}`,
   OnlineStatus : true , 
@@ -81,8 +77,6 @@ export let initialState = {
  },
  {
   name: "リムル・テンペスト",
-  lastMessage: "Hello",
-  lastMessageTime: "12:00",
   profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
   id: `${crypto.randomUUID()}`,
   OnlineStatus : false , 
@@ -118,8 +112,6 @@ export let initialState = {
  },
  {
   name: 'Groupe 1',
-  lastMessage: "Hello",
-  lastMessageTime: "12:00",
   profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" ,
   id: `${crypto.randomUUID()}`,
   OnlineStatus : false ,
