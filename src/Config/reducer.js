@@ -29,6 +29,7 @@ export let initialState = {
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
+  DropDown : false , 
  }, 
  {
   name : 'リムル・テンペスト' ,
@@ -37,7 +38,8 @@ export let initialState = {
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
- }
+  DropDown : false ,  
+}
 ]
  },
  {
@@ -64,6 +66,7 @@ export let initialState = {
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
+  DropDown : false , 
  }, 
  {
   name : 'リムル・テンペスト' ,
@@ -72,7 +75,8 @@ export let initialState = {
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
- }
+  DropDown : false ,  
+}
 ]
  },
  {
@@ -99,6 +103,7 @@ export let initialState = {
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
+  DropDown : false , 
  }, 
  {
   name : 'リムル・テンペスト' ,
@@ -107,6 +112,7 @@ export let initialState = {
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
+  DropDown : false , 
  }
 ]
  },
@@ -139,6 +145,7 @@ export let initialState = {
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
+  DropDown : false , 
  }, 
  {
   name : 'リムル・テンペスト' ,
@@ -147,6 +154,7 @@ export let initialState = {
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
+  DropDown : false , 
  }
 ]
  }
@@ -165,6 +173,10 @@ export const reducer = (state , action)=>{
     userFriends : action.userFriends
    }
    case 'SET_USER_FRIENDS' : return {
+    ...state ,
+    userFriends : action.userFriends
+   }
+   case 'SET_DROPDOWN' : return {
     ...state ,
     userFriends : action.userFriends
    }

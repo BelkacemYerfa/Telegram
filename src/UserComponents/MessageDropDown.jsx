@@ -1,9 +1,11 @@
 import { EmojiList, MessageSettings } from '../Config/MessageParameters';
+import {useDataLayervValue} from '../Config/dataLayer';
 
 
-
-export const MessageDropDown = ({})=>{
- 
+export const MessageDropDown = ({
+ userId
+})=>{
+ const [{user}] = useDataLayervValue();
  return (
   <div className="MessageDropDown" >
     <div className="EmojiListReactiopn" >
@@ -19,8 +21,15 @@ export const MessageDropDown = ({})=>{
      {
       MessageSettings.map(Setting => (
        <div className="MessageSettingsItem">
-         {Setting.Svg}
-         <p>{Setting.Item}</p>
+         {
+          (Setting.Item === 'Delete' || 'Edit') && userId === user?.uid  ?
+          (
+           <>
+              {Setting.Svg}
+              <p>{Setting.Item}</p>
+           </>
+          ) : null
+         }
        </div>
       ))
      }

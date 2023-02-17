@@ -103,7 +103,19 @@ export const MessagingRoom = () => {
                     <div className="MessageComponentUser" id={message?.id} >
                     <div className="UserMessage"
                      onClick={()=>{
-                      setMessageDropSettings(!MessageDropSettings)
+                      for(let i=0 ; i<userFriends?.length ; i++){
+                        for(let j=0 ; j<userFriends[i]?.Messages?.length ; j++){
+                          if(userFriends[i]?.Messages[j]?.id === message?.id){
+                            userFriends[i].Messages[j].DropDown = !userFriends[i].Messages[j].DropDown 
+                          }else{
+                            userFriends[i].Messages[j].DropDown = false
+                          }
+                        }
+                      }
+                       dispatch({
+                        type : 'SET_DROPDOWN',
+                        userFriends : userFriends
+                       })
                      }}
                      style={{
                       borderRadius : message?.id === user?.uid 
@@ -135,8 +147,8 @@ export const MessagingRoom = () => {
                       </div>
                     </div>
                     {
-                      MessageDropSettings && (
-                        <MessageDropDown />
+                      message?.DropDown && (
+                        <MessageDropDown userId={SelectedUser?.id} />
                       )
                     }
                   </div> 
