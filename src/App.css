@@ -204,7 +204,7 @@
   font-normal !important
  }
  .MessageComponentUser{
-  @apply w-full flex justify-end items-end gap-x-[7px] !important
+  @apply relative w-full flex justify-end items-end gap-x-[7px] !important
  }
  .MessageComponentUserFriend{
   @apply w-full flex justify-start items-end gap-x-[7px] !important
@@ -222,5 +222,45 @@
  .FriendUserMessage{
   @apply cursor-pointer max-w-[70%] flex items-end 
   gap-x-2 bg-UserFriendMessageBg py-[10px] px-2
+ }
+
+ /*Message Drop Down*/
+ .MessageDropDown{
+  @apply absolute top-0 left-[32.23%] px-1 rounded-lg 
+  border border-solid border-black/20
+  w-[35%] !important 
+ }
+ .EmojiListReactiopn{
+  @apply h-14 w-[100%] flex items-center justify-center p-0
+  gap-x-[2px] border-b border-solid border-white/10 !important
+ }
+ .Emoji {
+  @apply h-[38px] w-[38px] rounded flex items-center justify-center
+  cursor-pointer hover:bg-SearchInputBg text-[20px] !important
+ }
+ .MessageSettings{
+  @apply max-h-[250px] py-1 flex flex-col w-full overflow-y-scroll !important
+ }
+ .MessageSettingsItem{
+  @apply flex items-center gap-x-[15px] px-[15px] py-[10px] rounded
+  duration-300 ease-in-out hover:bg-SearchInputBg cursor-pointer !important
+ }
+ .ReactedUsers{
+  @apply cursor-pointer w-full p-1
+  border-t border-solid border-white/10 !important
+ }
+ .ReactedUsersHeader{
+  @apply flex items-center w-full justify-between
+  px-[15px] py-2 duration-300 rounded
+  ease-in-out hover:bg-SearchInputBg
+ }
+ .ReactedUsersInfo{
+  @apply flex items-center gap-x-[15px]
+ }
+ .ReactedUsersPics{
+  @apply flex items-center 
+ }
+ .UserReactedImage{
+  @apply h-[30px] w-[30px] rounded-[50%] !important
  }
 }

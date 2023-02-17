@@ -94,7 +94,10 @@ export const UserComponent = ({
           : LastMessageTime?.minute } 
         PM`
         :
-        `${LastMessageTime?.hour}`
+        `${LastMessageTime?.hour}:${LastMessageTime?.minute < 10 ? 
+          `0${LastMessageTime?.minute}` 
+          : LastMessageTime?.minute } 
+        AM`
        }
       </p>
      </div>

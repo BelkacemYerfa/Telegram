@@ -1,11 +1,13 @@
 import { useDataLayervValue } from "../Config/dataLayer";
 import { useEffect, useState } from "react";
+import {MessageDropDown} from '../UserComponents/MessageDropDown'
 
 export const MessagingRoom = () => {
 
   const [{userFriends , user} , dispatch] = useDataLayervValue();
   const [SelectedUser , setSelectedUser] = useState(null);
   const [UserMessage , SetUserMessage] = useState(null);
+  const [MessageDropSettings , setMessageDropSettings] = useState(false)
   const handleSelectedUser = ()=>{
     userFriends.forEach( user => {
       if(user.Selected === true){
@@ -98,8 +100,11 @@ export const MessagingRoom = () => {
                 <>
                  {
                    message?.id === user?.uid ? (
-                    <div className="MessageComponentUser" >
-                    <div className="UserMessage" id={message?.id}
+                    <div className="MessageComponentUser" id={message?.id} >
+                    <div className="UserMessage"
+                     onClick={()=>{
+                      setMessageDropSettings(!MessageDropSettings)
+                     }}
                      style={{
                       borderRadius : message?.id === user?.uid 
                       && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.id === user?.uid
@@ -129,6 +134,11 @@ export const MessagingRoom = () => {
                           }
                       </div>
                     </div>
+                    {
+                      MessageDropSettings && (
+                        <MessageDropDown />
+                      )
+                    }
                   </div> 
                    ) : (
                     <div className="MessageComponentUserFriend" >
