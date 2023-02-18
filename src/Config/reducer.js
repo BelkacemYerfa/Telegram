@@ -188,6 +188,14 @@ export const reducer = (state , action)=>{
     ...state ,
     userFriends : action.userFriends
    }
+   case 'REMOVE_MESSAGE' : return {
+    ...state ,
+    userFriends : action.userFriends
+   }
+   case 'EDIT_MESSAGE' : return {
+    ...state ,
+    userFriends : action.userFriends
+   }
    default : return state 
   }
 }

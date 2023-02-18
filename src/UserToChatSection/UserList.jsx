@@ -39,12 +39,11 @@ export const UserList = ({
            key={user?.id}
            photoURL={user?.profilePic}
            name={user?.name}
-           lastMessage={user?.lastMessage}
-           lastMessageTime={user?.lastMessageTime}
            userId={user?.id}
            OnlineStatus={user?.OnlineStatus} 
            Selected={user?.Selected}
            Members={user?.Members}
+           Messages={user?.Messages}
           />
         ))
       }

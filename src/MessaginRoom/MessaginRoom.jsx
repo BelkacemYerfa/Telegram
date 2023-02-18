@@ -110,6 +110,7 @@ export const MessagingRoom = () => {
                           }else{
                             userFriends[i].Messages[j].DropDown = false
                           }
+                          break;
                         }
                       }
                        dispatch({
@@ -148,7 +149,11 @@ export const MessagingRoom = () => {
                     </div>
                     {
                       message?.DropDown && (
-                        <MessageDropDown userId={user?.uid} />
+                        <MessageDropDown 
+                          userId={user?.uid} 
+                          messageId={message?.id} 
+                          message={message?.message}
+                        />
                       )
                     }
                   </div> 
@@ -207,7 +212,11 @@ export const MessagingRoom = () => {
                       </div>
                       {
                       message?.DropDown && (
-                        <MessageDropDown userId={message?.userId} />
+                        <MessageDropDown 
+                          userId={message?.userId} 
+                          messageId={message?.id} 
+                          message={message?.message}
+                        />
                       )
                     }
                     </div>
