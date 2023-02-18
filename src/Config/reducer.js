@@ -24,7 +24,8 @@ export let initialState = {
  ] , 
  Messages : [{
   name : 'Bylka' ,
-  id : '111' ,
+  userId:'111',
+  id :`${crypto.randomUUID()}`  ,
   message : 'Hello , how are you buddy ?' ,
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
@@ -33,6 +34,7 @@ export let initialState = {
  }, 
  {
   name : 'リムル・テンペスト' ,
+  userId : '222' ,
   id: `${crypto.randomUUID()}`,
   message : 'Hello , I am fine , and you ?' ,
   time : `${new Date().getHours()}` ,
@@ -61,7 +63,8 @@ export let initialState = {
  ],
  Messages : [{
   name : 'Bylka' ,
-  id : '111' ,
+  userId:'111',
+  id :`${crypto.randomUUID()}`  ,
   message : 'Hello , how are you buddy ?' ,
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
@@ -70,6 +73,7 @@ export let initialState = {
  }, 
  {
   name : 'リムル・テンペスト' ,
+  userId : '222' , 
   id: `${crypto.randomUUID()}`,
   message : 'Hello , I am fine , and you ?' ,
   time : `${new Date().getHours()}` ,
@@ -98,7 +102,8 @@ export let initialState = {
  ],
  Messages : [{
   name : 'Bylka' ,
-  id : '111' ,
+  userId:'111',
+  id :`${crypto.randomUUID()}`  ,
   message : 'Hello , how are you buddy ?' ,
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
@@ -107,6 +112,7 @@ export let initialState = {
  }, 
  {
   name : 'リムル・テンペスト' ,
+  userId:'222',
   id: `${crypto.randomUUID()}`,
   message : 'Hello , I am fine , and you ?' ,
   time : `${new Date().getHours()}` ,
@@ -140,7 +146,8 @@ export let initialState = {
  ],
  Messages : [{
   name : 'Bylka' ,
-  id : '111' ,
+  userId:'111',
+  id : `${crypto.randomUUID()}` ,
   message : 'Hello , how are you buddy ?' ,
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
@@ -149,6 +156,7 @@ export let initialState = {
  }, 
  {
   name : 'リムル・テンペスト' ,
+  userId:'222',
   id: `${crypto.randomUUID()}`,
   message : 'Hello , I am fine , and you ?' ,
   time : `${new Date().getHours()}` ,

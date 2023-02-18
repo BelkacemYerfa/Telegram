@@ -207,7 +207,7 @@
   @apply relative w-full flex justify-end items-end gap-x-[7px] !important
  }
  .MessageComponentUserFriend{
-  @apply w-full flex justify-start items-end gap-x-[7px] !important
+  @apply relative w-full flex justify-start items-end gap-x-[7px] !important
  }
  .UserMessage{
   @apply cursor-pointer max-w-[70%] flex items-end 
@@ -227,6 +227,11 @@
  /*Message Drop Down*/
  .MessageDropDown{
   @apply absolute top-0 left-[32.23%] px-1 rounded-lg 
+  border border-solid border-black/20 bg-UserListBg/50
+  w-[35%] !important 
+ }
+ .MessageDropDownOtherUser{
+  @apply absolute top-0 right-[32.23%] px-1 rounded-lg 
   border border-solid border-black/20 bg-UserListBg/50
   w-[35%] !important 
  }

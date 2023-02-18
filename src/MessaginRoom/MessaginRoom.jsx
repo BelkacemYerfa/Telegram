@@ -7,7 +7,6 @@ export const MessagingRoom = () => {
   const [{userFriends , user} , dispatch] = useDataLayervValue();
   const [SelectedUser , setSelectedUser] = useState(null);
   const [UserMessage , SetUserMessage] = useState(null);
-  const [MessageDropSettings , setMessageDropSettings] = useState(false)
   const handleSelectedUser = ()=>{
     userFriends.forEach( user => {
       if(user.Selected === true){
@@ -19,7 +18,8 @@ export const MessagingRoom = () => {
     userFriends.forEach( friend => {
       if(friend?.id === SelectedUser?.id){
         friend?.Messages?.push({
-          id: `${user?.uid}`,
+          userId: user?.uid,
+          id: `${crypto.randomUUID()}`,
           message: UserMessage,
           time: new Date().getHours(),
           timeMinutes: new Date().getMinutes(),
@@ -99,7 +99,7 @@ export const MessagingRoom = () => {
               SelectedUser?.Messages?.map(message => (
                 <>
                  {
-                   message?.id === user?.uid ? (
+                   message?.userId === user?.uid ? (
                     <div className="MessageComponentUser" id={message?.id} >
                     <div className="UserMessage"
                      onClick={()=>{
@@ -118,10 +118,10 @@ export const MessagingRoom = () => {
                        })
                      }}
                      style={{
-                      borderRadius : message?.id === user?.uid 
-                      && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.id === user?.uid
-                      ? SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.id === user?.uid 
-                      && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) - 1]?.id !== user?.uid
+                      borderRadius : message?.userId === user?.uid 
+                      && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.userId === user?.uid
+                      ? SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.userId === user?.uid 
+                      && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) - 1]?.userId !== user?.uid
                       ? "14px 14px 4px 14px" : "14px 4px 4px 14px" : "14px 4px 14px 14px"
                      }}
                     >
@@ -148,7 +148,7 @@ export const MessagingRoom = () => {
                     </div>
                     {
                       message?.DropDown && (
-                        <MessageDropDown userId={SelectedUser?.id} />
+                        <MessageDropDown userId={user?.uid} />
                       )
                     }
                   </div> 
@@ -161,11 +161,26 @@ export const MessagingRoom = () => {
                        ) : null
                      }
                       <div className="FriendUserMessage"
+                      onClick={()=>{
+                        for(let i=0 ; i<userFriends?.length ; i++){
+                          for(let j=0 ; j<userFriends[i]?.Messages?.length ; j++){
+                            if(userFriends[i]?.Messages[j]?.id === message?.id){
+                              userFriends[i].Messages[j].DropDown = !userFriends[i].Messages[j].DropDown 
+                            }else{
+                              userFriends[i].Messages[j].DropDown = false
+                            }
+                          }
+                        }
+                         dispatch({
+                          type : 'SET_DROPDOWN',
+                          userFriends : userFriends
+                         })
+                       }}
                        style={{
-                        borderRadius : message?.id === user?.uid 
-                        && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.id === user?.uid
-                        ? SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.id === user?.uid 
-                        && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) - 1]?.id !== user?.uid
+                        borderRadius : message?.userId === user?.uid 
+                        && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.userId === user?.uid
+                        ? SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.userId === user?.uid 
+                        && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) - 1]?.userId !== user?.uid
                         ? "14px 14px 14px 4px" : "4px 14px 14px 4px" : "4px 14px 14px 14px"
                        }}
                       >
@@ -190,6 +205,11 @@ export const MessagingRoom = () => {
                           }
                         </div>
                       </div>
+                      {
+                      message?.DropDown && (
+                        <MessageDropDown userId={message?.userId} />
+                      )
+                    }
                     </div>
                    )
                  }

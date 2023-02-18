@@ -7,7 +7,9 @@ export const MessageDropDown = ({
 })=>{
  const [{user}] = useDataLayervValue();
  return (
-  <div className="MessageDropDown" >
+  <div className={
+    userId === user?.uid ? "MessageDropDown" : "MessageDropDownOtherUser"
+  } >
     <div className="EmojiListReactiopn" >
       {
        EmojiList.map( emoji => (
@@ -19,18 +21,22 @@ export const MessageDropDown = ({
     </div>
     <div className="MessageSettings">
      {
-      MessageSettings.map(Setting => (
-       <div className="MessageSettingsItem">
-         {
-          (Setting.Item === 'Delete' || 'Edit') && userId === user?.uid  ?
-          (
-           <>
-              {Setting.Svg}
-              <p>{Setting.Item}</p>
-           </>
-          ) : null
-         }
-       </div>
+      MessageSettings.map( setting => (
+       <>
+        {
+          setting.Item === "Delete" || setting.Item === "Edit" ? userId === user.id ? (
+            <div className="MessageSettingsItem">
+              {setting.Svg}
+              <p>{setting.Item}</p>
+          </div>
+          ) : null : (
+            <div className="MessageSettingsItem">
+              {setting.Svg}
+              <p>{setting.Item}</p>
+          </div>
+          )
+        }
+       </>
       ))
      }
     </div>
