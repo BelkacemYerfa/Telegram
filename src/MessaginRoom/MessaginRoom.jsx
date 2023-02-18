@@ -15,18 +15,20 @@ export const MessagingRoom = () => {
     })
   }
   const handleUserMessage = ()=>{
-    userFriends.forEach( friend => {
-      if(friend?.id === SelectedUser?.id){
-        friend?.Messages?.push({
-          userId: user?.uid,
-          id: `${crypto.randomUUID()}`,
-          message: UserMessage,
-          time: new Date().getHours(),
-          timeMinutes: new Date().getMinutes(),
-          profilePic: user?.photoURL
-        })
-      }
-     })
+    if(UserMessage !== null || '' || undefined ){
+      userFriends.forEach( friend => {
+        if(friend?.id === SelectedUser?.id){
+          friend?.Messages?.push({
+            userId: user?.uid,
+            id: `${crypto.randomUUID()}`,
+            message: UserMessage,
+            time: new Date().getHours(),
+            timeMinutes: new Date().getMinutes(),
+            profilePic: user?.photoURL
+          })
+        }
+       })
+    }
      dispatch({
       type: 'SET_USER_NEW_MESSAGE',
       userFriends : userFriends
@@ -247,8 +249,8 @@ export const MessagingRoom = () => {
                  }
                 }}
                 onChange={(e)=>{
-                  e.preventDefault();
-                  if(e.target.value !== '' || null ){
+                  if(e.target.value !== '' || null  ){
+                    e.preventDefault();
                     SetUserMessage(e.target.value);
                   }
                 }}

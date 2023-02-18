@@ -57,7 +57,7 @@ export const UserComponent = ({
   useEffect(()=>{
     getLastMessageTime();
     getLastMessage();
-  } ,[])
+  } ,[userFriends])
 
   return (
   <Link className="UserComponent group" id={userId}
