@@ -1,12 +1,13 @@
 import { useDataLayervValue } from "../Config/dataLayer";
 import { useEffect, useState } from "react";
 import {MessageDropDown} from '../UserComponents/MessageDropDown'
-
+import {UploadedImageComponent} from '../UserComponents/uploadedImageComponent'
 export const MessagingRoom = () => {
 
   const [{userFriends , user} , dispatch] = useDataLayervValue();
   const [SelectedUser , setSelectedUser] = useState(null);
   const [UserMessage , SetUserMessage] = useState(null);
+  const [UploadedImages , setUploadedImages] = useState(false);
   const handleSelectedUser = ()=>{
     userFriends.forEach( user => {
       if(user.Selected === true){
@@ -19,12 +20,14 @@ export const MessagingRoom = () => {
       userFriends.forEach( friend => {
         if(friend?.id === SelectedUser?.id){
           friend?.Messages?.push({
+            name : user?.username ,
             userId: user?.uid,
             id: `${crypto.randomUUID()}`,
             message: UserMessage,
             time: new Date().getHours(),
             timeMinutes: new Date().getMinutes(),
-            profilePic: user?.photoURL
+            profilePic: user?.photoURL,
+            DropDown : false , 
           })
         }
        })
@@ -112,7 +115,6 @@ export const MessagingRoom = () => {
                           }else{
                             userFriends[i].Messages[j].DropDown = false
                           }
-                          break;
                         }
                       }
                        dispatch({
@@ -229,6 +231,11 @@ export const MessagingRoom = () => {
               }
             </div>
           </div>
+          {
+            UploadedImages && (
+              <UploadedImageComponent />
+            )
+          }
           <div className="UserMessageComponent" >
           <form className="MessageForm" action="" >
             <div className="UserFilesWithMessaging" >
@@ -241,6 +248,7 @@ export const MessagingRoom = () => {
                 </svg>
               </label>
               <input type="text" className="MessageInput" placeholder="Write a message..." 
+                required
                 onKeyDown={(event)=>{
                  if(event.key === 'Enter'){
                    event.preventDefault();
@@ -249,8 +257,8 @@ export const MessagingRoom = () => {
                  }
                 }}
                 onChange={(e)=>{
+                  e.preventDefault();
                   if(e.target.value !== '' || null  ){
-                    e.preventDefault();
                     SetUserMessage(e.target.value);
                   }
                 }}

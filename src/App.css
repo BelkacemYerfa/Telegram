@@ -226,12 +226,12 @@
 
  /*Message Drop Down*/
  .MessageDropDown{
-  @apply absolute top-0 left-[32.23%] px-1 rounded-lg 
+  @apply z-20 absolute top-0 left-[32.23%] px-1 rounded-lg 
   border border-solid border-black/20 bg-UserListBg/50
   w-[35%] !important 
  }
  .MessageDropDownOtherUser{
-  @apply absolute top-0 right-[32.23%] px-1 rounded-lg 
+  @apply z-20 absolute top-0 right-[32.23%] px-1 rounded-lg 
   border border-solid border-black/20 bg-UserListBg/50
   w-[35%] !important 
  }
