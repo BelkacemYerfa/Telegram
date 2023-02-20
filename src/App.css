@@ -117,7 +117,7 @@
 
  /* chat messaging component */
  .ChatRoom{
-  @apply bg-UserListBg/80 flex flex-col h-full 
+  @apply relative bg-UserListBg/80 flex flex-col h-full 
   text-white font-medium !important
  }
  .SelectedComponent{
@@ -165,7 +165,7 @@
   @apply flex-1
  }
  .UserMessageComponent{
-  @apply w-full pb-[14px] px-[45px] !important
+  @apply relative w-full pb-[14px] px-[45px] !important
  }
  .MessageForm{
   @apply flex items-center justify-between w-full rounded-lg
@@ -267,5 +267,37 @@
  }
  .UserReactedImage{
   @apply h-[30px] w-[30px] rounded-[50%] !important
+ }
+
+ /* Images Component */
+ .ImagesContainer{
+  @apply flex items-center justify-center !important
+ }
+ .ImagesHolderInfo{
+  @apply absolute bottom-16 rounded-t-lg
+  h-[200px] w-[88.5%] flex items-center bg-ChatOptionsBg !important
+ }
+ .ImageUserHolder{
+  @apply w-full
+ }
+ .ImagesHodler{
+  @apply relative p-[13px] flex items-center gap-x-[13px] flex-wrap overflow-y-scroll
+  !important 
+ }
+ .ImageHolder{
+  @apply relative
+ }
+ .ImageSettings{
+  @apply absolute right-1 top-1 w-fit flex items-center
+  bg-SettingImageComponentBg 
+  backdrop-blur-[10px] rounded !important ; 
+ }
+ .ImageItem{
+  @apply flex items-center justify-center p-[7px] cursor-pointer
+  duration-300 ease-in-out hover:scale-[1.15] hover:bg-red-600 
+  rounded !important
+ }
+ .UploadedImage{
+  @apply h-[150px] w-auto rounded !important
  }
 }

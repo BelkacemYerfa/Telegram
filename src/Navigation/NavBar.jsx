@@ -51,7 +51,7 @@ export const NavBar = () => {
           className="ChatOptionSelector group " 
           onClick={
             SelectedGroup[0].id === Component?.id ? 
-            HandleStrockeColor : HandleStrockeColorFalse 
+            HandleStrockeColorFalse : HandleStrockeColor
           }>
           <div className="SelectedType" ></div>
             <div className="chatItem">

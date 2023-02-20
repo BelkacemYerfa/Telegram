@@ -1,8 +1,42 @@
 
-export const UploadedImageComponent = () => {
+export const UploadedImageComponent = ({
+  UploadedImages
+}) => {
+
+ const RemoveImage = (image)=>{
+  UploadedImages.splice(UploadedImages.indexOf(image),1);
+ }
+
  return(
-  <div className="ImageUserHolder" >
-   HELLO
+  <div className="ImagesContainer" >
+    <div className="ImagesHolderInfo" >
+    <div className="ImageUserHolder" >
+      <div className="ImagesHodler" >
+        {UploadedImages.map(image => (
+          <div className="ImageHolder" key={image}>
+           <div className="ImageSettings" >
+            <div className="ImageItem" >
+             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g opacity="0.7">
+               <path d="M11.677 4.38444L15.613 8.32044L7.57506 16.359C7.36997 16.5641 7.12323 16.7217 6.85236 16.8215L6.68708 16.8744L2.63211 17.9803C2.28552 18.0748 1.96546 17.7862 2.00301 17.4457L2.01817 17.3663L3.12407 13.3113C3.20039 13.0315 3.33646 12.7723 3.52212 12.5513L3.63939 12.4234L11.677 4.38444ZM13.2452 2.81755C14.332 1.73074 16.0941 1.73074 17.1809 2.81755C18.2224 3.85907 18.2658 5.52075 17.3111 6.61395L17.1809 6.75322L16.32 7.61344L12.384 3.67744L13.2452 2.81755Z" fill="white"/>
+              </g>
+             </svg>
+            </div>
+            <div className="ImageItem"
+            >
+             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g opacity="0.7">
+               <path d="M10 1.25C11.4346 1.25 12.6126 2.34848 12.7388 3.75019L17 3.75C17.4142 3.75 17.75 4.08579 17.75 4.5C17.75 4.8797 17.4678 5.19349 17.1018 5.24315L17 5.25H16.417L15.1499 16.2292C15.0335 17.2384 14.179 18 13.1631 18H6.83688C5.821 18 4.9665 17.2384 4.85006 16.2292L3.582 5.25H3C2.6203 5.25 2.30651 4.96785 2.25685 4.60177L2.25 4.5C2.25 4.1203 2.53215 3.80651 2.89823 3.75685L3 3.75L7.26119 3.75019C7.38741 2.34848 8.56542 1.25 10 1.25ZM8.5 7.5C8.25454 7.5 8.05039 7.65477 8.00806 7.85886L8 7.9375V14.0625L8.00806 14.1411C8.05039 14.3452 8.25454 14.5 8.5 14.5C8.74546 14.5 8.94961 14.3452 8.99194 14.1411L9 14.0625V7.9375L8.99194 7.85886C8.94961 7.65477 8.74546 7.5 8.5 7.5ZM11.5 7.5C11.2545 7.5 11.0504 7.65477 11.0081 7.85886L11 7.9375V14.0625L11.0081 14.1411C11.0504 14.3452 11.2545 14.5 11.5 14.5C11.7455 14.5 11.9496 14.3452 11.9919 14.1411L12 14.0625V7.9375L11.9919 7.85886C11.9496 7.65477 11.7455 7.5 11.5 7.5ZM10 2.75C9.39524 2.75 8.89079 3.17947 8.77499 3.75005H11.225C11.1092 3.17947 10.6048 2.75 10 2.75Z" fill="white"/>
+              </g>
+             </svg>
+            </div>
+           </div>
+           <img className="UploadedImage" src={image} alt='UploadedImage' />
+          </div>
+        ))}
+      </div>
+    </div>
+   </div>
   </div>
  )
 }

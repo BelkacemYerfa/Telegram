@@ -7,7 +7,8 @@ export const MessagingRoom = () => {
   const [{userFriends , user} , dispatch] = useDataLayervValue();
   const [SelectedUser , setSelectedUser] = useState(null);
   const [UserMessage , SetUserMessage] = useState(null);
-  const [UploadedImages , setUploadedImages] = useState(false);
+  const [UploadedImagesToggle , setUploadedImagesToggle] = useState(false);
+  const [UploadedImages , setUploadedImages] = useState([]);
   const handleSelectedUser = ()=>{
     userFriends.forEach( user => {
       if(user.Selected === true){
@@ -231,16 +232,26 @@ export const MessagingRoom = () => {
               }
             </div>
           </div>
-          {
-            UploadedImages && (
-              <UploadedImageComponent />
-            )
-          }
           <div className="UserMessageComponent" >
+          {
+              UploadedImagesToggle && (
+                <UploadedImageComponent 
+                  UploadedImages={UploadedImages}
+                />
+              )
+            }
           <form className="MessageForm" action="" >
             <div className="UserFilesWithMessaging" >
               <label className="MessageOption" >
                 <input type="file" className="FilesInput"
+                onChange={(e)=>{
+                  e.preventDefault();
+                  if(e.target.files[0] !== null || undefined){
+                    let file = URL.createObjectURL(e.target.files[0]);
+                    setUploadedImages(UploadedImages => [...UploadedImages , file]);
+                    setUploadedImagesToggle(true);
+                  }
+                }}
                 accept="image/png, image/jpg, image/gif, image/jpeg"
                 id="file" />
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
