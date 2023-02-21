@@ -282,7 +282,7 @@
  }
  .ImagesHodler{
   @apply relative p-[13px] flex items-center gap-[13px] 
-  flex-wrap overflow-y-scroll h-[200px]
+  flex-wrap overflow-y-scroll h-[200px] cursor-pointer
   !important 
  }
  .ImageHolder{
@@ -301,5 +301,15 @@
  }
  .UploadedImage{
   @apply h-[150px] w-auto rounded !important
+ }
+ .ImagesHolderSended{
+  @apply relative flex items-center gap-1 overflow-y-scroll
+  flex-wrap max-h-[400px] max-w-[50%]
+  !important
+ }
+ .TimeHolder{
+  @apply cursor-pointer absolute bottom-1 right-1 rounded-md
+  bg-MessageComponentBg px-[3px] py-[4px] text-[12px]
+  font-[350] !important
  }
 }

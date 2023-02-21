@@ -1,7 +1,7 @@
 import { useDataLayervValue } from "../Config/dataLayer";
 import { useEffect, useState } from "react";
-import {MessageDropDown} from '../UserComponents/MessageDropDown';
 import { MessaginComponent } from "../Config/MessageParameters";
+import { MessageComponent } from "../UserComponents/MessageComponent";
 
 export const MessagingRoom = () => {
 
@@ -61,6 +61,7 @@ export const MessagingRoom = () => {
           })
         }
        })
+       SetUserMessage(null);
     }
     else if (UploadedImages.length > 0){
       userFriends.forEach( friend => {
@@ -78,6 +79,7 @@ export const MessagingRoom = () => {
         }
        })
        setUploadedImagesToggle(false);
+       setUploadedImages([])
     }
      dispatch({
       type: 'SET_USER_NEW_MESSAGE',
@@ -151,144 +153,16 @@ export const MessagingRoom = () => {
               SelectedUser?.Messages?.map(message => (
                 <>
                  {
-                   message?.userId === user?.uid ? (
-                    <div className="MessageComponentUser" id={message?.id} >
-                    <div className="UserMessage"
-                     onClick={()=>{
-                      for(let i=0 ; i<userFriends?.length ; i++){
-                        for(let j=0 ; j<userFriends[i]?.Messages?.length ; j++){
-                          if(userFriends[i]?.Messages[j]?.id === message?.id){
-                            userFriends[i].Messages[j].DropDown = !userFriends[i].Messages[j].DropDown 
-                          }else{
-                            userFriends[i].Messages[j].DropDown = false
-                          }
-                        }
-                      }
-                       dispatch({
-                        type : 'SET_DROPDOWN',
-                        userFriends : userFriends
-                       })
-                     }}
-                     style={{
-                      borderRadius : message?.userId === user?.uid 
-                      && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.userId === user?.uid
-                      ? SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.userId === user?.uid 
-                      && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) - 1]?.userId !== user?.uid
-                      ? "14px 14px 4px 14px" : "14px 4px 4px 14px" : "14px 4px 14px 14px"
-                     }}
-                    >
-                      {
-                        Array.isArray(message?.message) ? 
-                            message?.message?.map(image => (
-                              <img 
-                              className="UploadedImage" 
-                              src={image} 
-                              alt="imageSented" />
-                            ))
-                        : (
-                        <div className="MessageInfo" >
-                          {message?.message}
-                        </div>
-                        )
-                      }
-                      <div className="MessageTime">
-                          {
-                            message?.time > 12 
-                            ? `${Number(message?.time) - 12}:${
-                              message?.timeMinutes < 10 ? 
-                              `0${message?.timeMinutes}`
-                              : message?.timeMinutes 
-                            }PM` 
-                            : `${Number(message?.time)}:${
-                              message?.timeMinutes < 10 ? 
-                              `0${message?.timeMinutes}`
-                              : message?.timeMinutes 
-                            }AM`
-                          }
-                      </div>
-                    </div>
-                    {
-                      message?.DropDown && (
-                        <MessageDropDown 
-                          userId={user?.uid} 
-                          messageId={message?.id} 
-                          message={message?.message}
-                        />
-                      )
-                    }
-                  </div> 
-                   ) : (
-                    <div className="MessageComponentUserFriend" >
-                      {
-                       SelectedUser?.Members?.length > 2 ? (
-                        <img className="profilePicConverstaion" 
-                        src={message?.profilePic} alt="userprofileImage" />
-                       ) : null
-                     }
-                      <div className="FriendUserMessage"
-                      onClick={()=>{
-                        for(let i=0 ; i<userFriends?.length ; i++){
-                          for(let j=0 ; j<userFriends[i]?.Messages?.length ; j++){
-                            if(userFriends[i]?.Messages[j]?.id === message?.id){
-                              userFriends[i].Messages[j].DropDown = !userFriends[i].Messages[j].DropDown 
-                            }else{
-                              userFriends[i].Messages[j].DropDown = false
-                            }
-                          }
-                        }
-                         dispatch({
-                          type : 'SET_DROPDOWN',
-                          userFriends : userFriends
-                         })
-                       }}
-                       style={{
-                        borderRadius : message?.userId === user?.uid 
-                        && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.userId === user?.uid
-                        ? SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.userId === user?.uid 
-                        && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) - 1]?.userId !== user?.uid
-                        ? "14px 14px 14px 4px" : "4px 14px 14px 4px" : "4px 14px 14px 14px"
-                       }}
-                      >
-                        {
-                         Array.isArray(message?.message) ? 
-                              message?.message?.map(image => (
-                                <img 
-                                className="UploadedImage" 
-                                src={image} 
-                                alt="imageSented" />
-                             ))
-                          : (
-                          <div className="MessageInfo" >
-                            {message?.message}
-                          </div>
-                         )
-                        }
-                        <div className="MessageTime">
-                          {
-                            message?.time > 12 
-                            ? `${Number(message?.time) - 12}:${
-                              message?.timeMinutes < 10 ? 
-                              `0${message?.timeMinutes}`
-                              : message?.timeMinutes 
-                            }PM` 
-                            : `${Number(message?.time)}:${
-                              message?.timeMinutes < 10 ? 
-                              `0${message?.timeMinutes}`
-                              : message?.timeMinutes 
-                            }AM`
-                          }
-                        </div>
-                      </div>
-                      {
-                      message?.DropDown && (
-                        <MessageDropDown 
-                          userId={message?.userId} 
-                          messageId={message?.id} 
-                          message={message?.message}
-                        />
-                      )
-                    }
-                    </div>
+                   message?.userId === user?.uid ?
+                    <MessageComponent 
+                      SelectedUser={SelectedUser}
+                      message={message}
+                    />
+                   : (
+                    <MessageComponent 
+                      SelectedUser={SelectedUser}
+                      message={message}
+                    />
                    )
                  }
                 </>
