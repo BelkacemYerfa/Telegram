@@ -180,8 +180,7 @@ export const MessagingRoom = () => {
                 )) : (
                   <div className="SelectedComponent" >
                     <p className="SelectChat" >
-                     No Message for Now , 
-                     be the first . 
+                     No Message for Now , be the first . 
                     </p>
                   </div>
                 )

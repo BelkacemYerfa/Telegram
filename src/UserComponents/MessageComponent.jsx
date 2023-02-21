@@ -30,9 +30,11 @@ export const MessageComponent = ({
   <div className={message?.userId === user?.uid ?
   "MessageComponentUser" : "MessageComponentUserFriend"} >
      {
-      SelectedUser?.Members?.length > 2 ? (
-       <img className="profilePicConverstaion" 
-       src={message?.profilePic} alt="userprofileImage" />
+      SelectedUser?.Members?.length > 2 && message?.userId !== user?.uid ? (
+       <img 
+        className="profilePicConverstaion" 
+        src={message?.profilePic} alt="userprofileImage" 
+       />
       ) : null
     }
      {
