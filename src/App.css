@@ -281,7 +281,8 @@
   @apply w-full
  }
  .ImagesHodler{
-  @apply relative p-[13px] flex items-center gap-x-[13px] flex-wrap overflow-y-scroll
+  @apply relative p-[13px] flex items-center gap-[13px] 
+  flex-wrap overflow-y-scroll h-[200px]
   !important 
  }
  .ImageHolder{
@@ -289,12 +290,13 @@
  }
  .ImageSettings{
   @apply absolute right-1 top-1 w-fit flex items-center
-  bg-SettingImageComponentBg 
+  bg-SettingImageComponentBg border-none outline-none
   backdrop-blur-[10px] rounded !important ; 
  }
  .ImageItem{
   @apply flex items-center justify-center p-[7px] cursor-pointer
   duration-300 ease-in-out hover:scale-[1.15] hover:bg-red-600 
+  border-none outline-none
   rounded !important
  }
  .UploadedImage{
