@@ -47,21 +47,30 @@ export const MessagingRoom = () => {
   }
   const handleUserMessage = ()=>{
     if(UserMessage !== null || '' || undefined){
-      userFriends.forEach( friend => {
-        if(friend?.id === SelectedUser?.id){
-          friend?.Messages?.push({
-            name : user?.username ,
-            userId: user?.uid,
-            id: `${crypto.randomUUID()}`,
-            message: UserMessage,
-            time: new Date().getHours(),
-            timeMinutes: new Date().getMinutes(),
-            profilePic: user?.photoURL,
-            DropDown : false , 
-          })
-        }
-       })
-       SetUserMessage(null);
+      if(UserMessage === '/clear'){
+        userFriends.forEach( friend => {
+          if(friend?.id === SelectedUser?.id){
+            friend.Messages = [];
+          }
+        })
+      }else {
+        userFriends.forEach( friend => {
+          if(friend?.id === SelectedUser?.id){
+            friend?.Messages?.push({
+              name : user?.username ,
+              userId: user?.uid,
+              id: `${crypto.randomUUID()}`,
+              message: UserMessage,
+              time: new Date().getHours(),
+              timeMinutes: new Date().getMinutes(),
+              profilePic: user?.photoURL,
+              DropDown : false , 
+            })
+          }
+         })
+         SetUserMessage(null);
+      }
+      
     }
     else if (UploadedImages.length > 0){
       userFriends.forEach( friend => {
@@ -79,12 +88,13 @@ export const MessagingRoom = () => {
         }
        })
        setUploadedImagesToggle(false);
-       setUploadedImages([])
+       setUploadedImages([]);
     }
      dispatch({
       type: 'SET_USER_NEW_MESSAGE',
       userFriends : userFriends
     });
+    setSelectedMessageComponent(MessaginComponent[1]);
   }
   useEffect(()=>{
     handleSelectedUser();
@@ -149,24 +159,32 @@ export const MessagingRoom = () => {
         </div>
           <div className="ChatMessaging" >
             <div className="MessagesHolder" >
-              { 
-              SelectedUser?.Messages?.map(message => (
-                <>
-                 {
-                   message?.userId === user?.uid ?
-                    <MessageComponent 
-                      SelectedUser={SelectedUser}
-                      message={message}
-                    />
-                   : (
-                    <MessageComponent 
-                      SelectedUser={SelectedUser}
-                      message={message}
-                    />
-                   )
-                 }
-                </>
-              ))
+              {
+                SelectedUser?.Messages?.length > 0 ? 
+                SelectedUser?.Messages?.map(message => (
+                  <>
+                   {
+                     message?.userId === user?.uid ?
+                      <MessageComponent 
+                        SelectedUser={SelectedUser}
+                        message={message}
+                      />
+                     : (
+                      <MessageComponent 
+                        SelectedUser={SelectedUser}
+                        message={message}
+                      />
+                     )
+                   }
+                  </>
+                )) : (
+                  <div className="SelectedComponent" >
+                    <p className="SelectChat" >
+                     No Message for Now , 
+                     be the first . 
+                    </p>
+                  </div>
+                )
               }
             </div>
           </div>
