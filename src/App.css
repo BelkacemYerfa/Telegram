@@ -47,6 +47,9 @@
  .ChatTitle{
   @apply flex w-fit justify-center gap-x-[13.5px]
  }
+ .UserList{
+  @apply max-h-full overflow-y-scroll !important 
+ }
  .Menu{
   @apply sticky left-0 cursor-pointer
  }
