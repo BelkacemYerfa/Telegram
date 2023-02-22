@@ -33,7 +33,7 @@
   @apply flex items-center justify-center 
  }
  .Icon{
-  @apply group-focus:stroke-ChatOptionsHoverBg !important
+  @apply stroke-[#868686] group-focus:stroke-ChatOptionsHoverBg !important
  }
  .ChatGPTPic{
   @apply h-9 w-9 rounded !important

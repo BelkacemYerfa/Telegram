@@ -33,11 +33,16 @@ export const MessagingRoom = () => {
   const SendMessageVerification = (event)=>{
     if(event.key === 'Enter'){
       event.preventDefault();
-      handleUserMessage();
-      event.target.value = '';
+      if(UserMessage !== null || '' || undefined){
+        handleUserMessage();
+        event.target.value = '';
+      }
+      if(UploadedImages.length > 0){
+        handleUserImages();
+      }
     }
    }
-
+  
   const handleSelectedUser = ()=>{
     userFriends.forEach( user => {
       if(user.Selected === true){
@@ -45,9 +50,36 @@ export const MessagingRoom = () => {
       }
     })
   }
+
+  const handleUserImages = ()=>{
+    if (UploadedImages.length > 0){
+      userFriends.forEach( friend => {
+        if(friend?.id === SelectedUser?.id){
+          friend?.Messages?.push({
+            name : user?.username ,
+            userId: user?.uid,
+            id: `${crypto.randomUUID()}`,
+            message: UploadedImages,
+            time: new Date().getHours(),
+            timeMinutes: new Date().getMinutes(),
+            profilePic: user?.photoURL,
+            DropDown : false , 
+          })
+        }
+       })
+       setUploadedImagesToggle(false);
+       setUploadedImages([]);
+    }
+    dispatch({
+      type: 'SET_USER_NEW_MESSAGE',
+      userFriends : userFriends
+    });
+    setSelectedMessageComponent(MessaginComponent[1]);
+  }
+
   const handleUserMessage = ()=>{
     if(UserMessage !== null || '' || undefined){
-      if(UserMessage === '/clear'){
+      if(UserMessage.toLowerCase() === '/clear'){
         userFriends.forEach( friend => {
           if(friend?.id === SelectedUser?.id){
             friend.Messages = [];
@@ -70,31 +102,11 @@ export const MessagingRoom = () => {
          })
          SetUserMessage(null);
       }
-      
-    }
-    else if (UploadedImages.length > 0){
-      userFriends.forEach( friend => {
-        if(friend?.id === SelectedUser?.id){
-          friend?.Messages?.push({
-            name : user?.username ,
-            userId: user?.uid,
-            id: `${crypto.randomUUID()}`,
-            message: UploadedImages,
-            time: new Date().getHours(),
-            timeMinutes: new Date().getMinutes(),
-            profilePic: user?.photoURL,
-            DropDown : false , 
-          })
-        }
-       })
-       setUploadedImagesToggle(false);
-       setUploadedImages([]);
     }
      dispatch({
       type: 'SET_USER_NEW_MESSAGE',
       userFriends : userFriends
     });
-    setSelectedMessageComponent(MessaginComponent[1]);
   }
   useEffect(()=>{
     handleSelectedUser();
@@ -223,7 +235,9 @@ export const MessagingRoom = () => {
                 </div>
               )
             }
-          <form className="MessageForm" action="" >
+          <form className="MessageForm" action="" 
+           onKeyDown={SendMessageVerification}
+          >
             <div className="UserFilesWithMessaging" >
               <label className="MessageOption" >
                 <input type="file" className="FilesInput"
@@ -236,7 +250,6 @@ export const MessagingRoom = () => {
               </label>
               <input type="text" className="MessageInput" placeholder="Write a message..." 
                 required
-                onKeyDown={SendMessageVerification}
                 onChange={(e)=>{
                   e.preventDefault();
                   if(e.target.value !== '' || null  ){
