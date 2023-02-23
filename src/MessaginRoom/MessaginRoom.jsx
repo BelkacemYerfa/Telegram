@@ -11,6 +11,7 @@ export const MessagingRoom = () => {
   const [UploadedImagesToggle , setUploadedImagesToggle] = useState(false);
   const [UploadedImages , setUploadedImages] = useState([]);
   const [SelectedMessageComponent , setSelectedMessageComponent] = useState(MessaginComponent[1]);
+  const [UserRank , SetUserRank] = useState(null)
 
   const RemoveImage = (image)=>{
     setUploadedImages(UploadedImages.filter( img => img !== image));
@@ -30,6 +31,19 @@ export const MessagingRoom = () => {
     }
   }
 
+  /*
+   const SelectAuthorization = ()=>{
+    for(let i = 0 ; i < SelectedUser?.Messages.length ; i++){
+      if(SelectedUser.Messages[i].userId === user?.uid){
+        SetUserRank(
+          SelectedUser.Messages[i].userRank
+        )
+        console.log(SelectedUser.Messages[i].userRank);
+      }
+    }
+  }
+  */
+
   const SendMessageVerification = (event)=>{
     if(event.key === 'Enter'){
       event.preventDefault();
@@ -42,7 +56,7 @@ export const MessagingRoom = () => {
       }
     }
    }
-  
+
   const handleSelectedUser = ()=>{
     userFriends.forEach( user => {
       if(user.Selected === true){
@@ -64,6 +78,7 @@ export const MessagingRoom = () => {
             timeMinutes: new Date().getMinutes(),
             profilePic: user?.photoURL,
             DropDown : false , 
+            userRank : UserRank !== null ? UserRank : 'Member'
           })
         }
        })
@@ -97,6 +112,7 @@ export const MessagingRoom = () => {
               timeMinutes: new Date().getMinutes(),
               profilePic: user?.photoURL,
               DropDown : false , 
+              userRank : UserRank !== null ? UserRank : 'Member'
             })
           }
          })

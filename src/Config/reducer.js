@@ -31,6 +31,7 @@ export let initialState = {
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
   DropDown : false , 
+  userRank : 'Member',
  }, 
  {
   name : 'リムル・テンペスト' ,
@@ -41,6 +42,7 @@ export let initialState = {
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
   DropDown : false ,  
+  userRank : 'Member',
 }
 ]
  },
@@ -70,6 +72,7 @@ export let initialState = {
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
   DropDown : false , 
+  userRank : 'Member',
  }, 
  {
   name : 'リムル・テンペスト' ,
@@ -80,6 +83,7 @@ export let initialState = {
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
   DropDown : false ,  
+  userRank : 'Member',
 }
 ]
  },
@@ -108,7 +112,8 @@ export let initialState = {
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
-  DropDown : false , 
+  DropDown : false ,
+  userRank : 'Member',
  }, 
  {
   name : 'リムル・テンペスト' ,
@@ -118,7 +123,8 @@ export let initialState = {
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
-  DropDown : false , 
+  DropDown : false ,
+  userRank : 'Member',
  }
 ]
  },
@@ -129,8 +135,8 @@ export let initialState = {
   OnlineStatus : false ,
   Selected : false ,
   Members : [{
-   name: "リムル・テンペスト",
-   id: `${crypto.randomUUID()}`,
+   name: "Bylka",
+   id: '111',
    profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" ,
   } ,
   {
