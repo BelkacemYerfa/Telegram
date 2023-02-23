@@ -15,12 +15,16 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-       <NavBar /> 
+       {
+         Toggle && (
+          <NavBar /> 
+         )
+       }
        <Routes>
          <Route path='/' element={<ChatComponent handleToggle={handleToggle} />} />
-         <Route path='/Groupes' element={<ChatComponent />} />
-         <Route path='/Personal' element={<ChatComponent />}/>
-         <Route path='/AskAI' element={<ChatComponent />}/>
+         <Route path='/Groupes' element={<ChatComponent need={true} handleToggle={handleToggle} />} />
+         <Route path='/Personal' element={<ChatComponent handleToggle={handleToggle} />}/>
+         <Route path='/AskAI' element={<ChatComponent handleToggle={handleToggle} />}/>
        </Routes>
       </BrowserRouter>
     </div>

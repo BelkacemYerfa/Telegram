@@ -3,6 +3,9 @@
 #env
 .env
 
+#vscode
+.vscode
+
 # dependencies
 /node_modules
 /.pnp

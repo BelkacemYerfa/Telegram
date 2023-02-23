@@ -1,39 +1,132 @@
 import { useDataLayervValue } from "../Config/dataLayer";
 import { useEffect, useState } from "react";
+import { MessaginComponent } from "../Config/MessageParameters";
+import { MessageComponent } from "../UserComponents/MessageComponent";
 
 export const MessagingRoom = () => {
 
   const [{userFriends , user} , dispatch] = useDataLayervValue();
   const [SelectedUser , setSelectedUser] = useState(null);
   const [UserMessage , SetUserMessage] = useState(null);
+  const [UploadedImagesToggle , setUploadedImagesToggle] = useState(false);
+  const [UploadedImages , setUploadedImages] = useState([]);
+  const [SelectedMessageComponent , setSelectedMessageComponent] = useState(MessaginComponent[1]);
+  const [UserRank , SetUserRank] = useState(null)
+
+  const RemoveImage = (image)=>{
+    setUploadedImages(UploadedImages.filter( img => img !== image));
+    if(UploadedImages.length === 1){
+      setUploadedImagesToggle(false);
+      setSelectedMessageComponent(MessaginComponent[1]);
+    }
+  }
+
+  const ImageUploading = (e)=>{
+    e.preventDefault();
+    if(e.target.files[0] !== null || undefined){
+      let file = URL.createObjectURL(e.target.files[0]);
+      setUploadedImages(UploadedImages => [...UploadedImages , file]);
+      setUploadedImagesToggle(true);
+      setSelectedMessageComponent(MessaginComponent[0]);
+    }
+  }
+
+  /*
+   const SelectAuthorization = ()=>{
+    for(let i = 0 ; i < SelectedUser?.Messages.length ; i++){
+      if(SelectedUser.Messages[i].userId === user?.uid){
+        SetUserRank(
+          SelectedUser.Messages[i].userRank
+        )
+        console.log(SelectedUser.Messages[i].userRank);
+      }
+    }
+  }
+  */
+
+  const SendMessageVerification = (event)=>{
+    if(event.key === 'Enter'){
+      event.preventDefault();
+      if(UserMessage !== null || '' || undefined){
+        handleUserMessage();
+        event.target.value = '';
+      }
+      if(UploadedImages.length > 0){
+        handleUserImages();
+      }
+    }
+   }
+
   const handleSelectedUser = ()=>{
     userFriends.forEach( user => {
       if(user.Selected === true){
         setSelectedUser(user);
       }
-      return user;
     })
   }
+
+  const handleUserImages = ()=>{
+    if (UploadedImages.length > 0){
+      userFriends.forEach( friend => {
+        if(friend?.id === SelectedUser?.id){
+          friend?.Messages?.push({
+            name : user?.username ,
+            userId: user?.uid,
+            id: `${crypto.randomUUID()}`,
+            message: UploadedImages,
+            time: new Date().getHours(),
+            timeMinutes: new Date().getMinutes(),
+            profilePic: user?.photoURL,
+            DropDown : false , 
+            userRank : UserRank !== null ? UserRank : 'Member'
+          })
+        }
+       })
+       setUploadedImagesToggle(false);
+       setUploadedImages([]);
+    }
+    dispatch({
+      type: 'SET_USER_NEW_MESSAGE',
+      userFriends : userFriends
+    });
+    setSelectedMessageComponent(MessaginComponent[1]);
+  }
+
   const handleUserMessage = ()=>{
-    userFriends.forEach( friend => {
-      if(friend?.id === SelectedUser?.id){
-        friend?.Messages?.push({
-          id: `${user?.uid}`,
-          message: UserMessage,
-          time: new Date().getHours(),
-          timeMinutes: new Date().getMinutes(),
-          profilePic: user?.photoURL
+    if(UserMessage !== null || '' || undefined){
+      if(UserMessage.toLowerCase() === '/clear'){
+        userFriends.forEach( friend => {
+          if(friend?.id === SelectedUser?.id){
+            friend.Messages = [];
+          }
         })
+      }else {
+        userFriends.forEach( friend => {
+          if(friend?.id === SelectedUser?.id){
+            friend?.Messages?.push({
+              name : user?.username ,
+              userId: user?.uid,
+              id: `${crypto.randomUUID()}`,
+              message: UserMessage,
+              time: new Date().getHours(),
+              timeMinutes: new Date().getMinutes(),
+              profilePic: user?.photoURL,
+              DropDown : false , 
+              userRank : UserRank !== null ? UserRank : 'Member'
+            })
+          }
+         })
+         SetUserMessage(null);
       }
-     })
+    }
      dispatch({
       type: 'SET_USER_NEW_MESSAGE',
       userFriends : userFriends
-    })
+    });
   }
   useEffect(()=>{
     handleSelectedUser();
-  });
+  } );
  return(
   <div className="ChatRoom" >
     {
@@ -94,94 +187,77 @@ export const MessagingRoom = () => {
         </div>
           <div className="ChatMessaging" >
             <div className="MessagesHolder" >
-              { 
-              SelectedUser?.Messages?.map(message => (
-                <>
-                 {
-                   message?.id === user?.uid ? (
-                    <div className="MessageComponentUser" >
-                    <div className="UserMessage" id={message?.id}
-                     style={{
-                      borderRadius : message?.id === user?.uid 
-                      && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.id === user?.uid
-                      ? SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.id === user?.uid 
-                      && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) - 1]?.id !== user?.uid
-                      ? "14px 14px 4px 14px" : "14px 4px 4px 14px" : "14px 4px 14px 14px"
-                     }}
-                    >
-                      <div className="MessageInfo" >
-                        {
-                          message?.message
-                        }
-                      </div>
-                      <div className="MessageTime">
-                          {
-                            message?.time > 12 
-                            ? `${Number(message?.time) - 12}:${
-                              message?.timeMinutes < 10 ? 
-                              `0${message?.timeMinutes}`
-                              : message?.timeMinutes 
-                            }PM` 
-                            : `${Number(message?.time)}:${
-                              message?.timeMinutes < 10 ? 
-                              `0${message?.timeMinutes}`
-                              : message?.timeMinutes 
-                            }AM`
-                          }
-                      </div>
-                    </div>
-                  </div> 
-                   ) : (
-                    <div className="MessageComponentUserFriend" >
-                      {
-                       SelectedUser?.Members?.length > 2 ? (
-                        <img className="profilePicConverstaion" 
-                        src={message?.profilePic} alt="userprofileImage" />
-                       ) : null
-                     }
-                      <div className="FriendUserMessage"
-                       style={{
-                        borderRadius : message?.id === user?.uid 
-                        && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.id === user?.uid
-                        ? SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) + 1]?.id === user?.uid 
-                        && SelectedUser?.Messages[SelectedUser?.Messages?.indexOf(message) - 1]?.id !== user?.uid
-                        ? "14px 14px 14px 4px" : "4px 14px 14px 4px" : "4px 14px 14px 14px"
-                       }}
-                      >
-                        <div className="MessageInfo" >
-                         {
-                            message?.message
-                         }
-                        </div>
-                        <div className="MessageTime">
-                          {
-                            message?.time > 12 
-                            ? `${Number(message?.time) - 12}:${
-                              message?.timeMinutes < 10 ? 
-                              `0${message?.timeMinutes}`
-                              : message?.timeMinutes 
-                            }PM` 
-                            : `${Number(message?.time)}:${
-                              message?.timeMinutes < 10 ? 
-                              `0${message?.timeMinutes}`
-                              : message?.timeMinutes 
-                            }AM`
-                          }
-                        </div>
-                      </div>
-                    </div>
-                   )
-                 }
-                </>
-              ))
+              {
+                SelectedUser?.Messages?.length > 0 ? 
+                SelectedUser?.Messages?.map(message => (
+                  <>
+                   {
+                     message?.userId === user?.uid ?
+                      <MessageComponent 
+                        SelectedUser={SelectedUser}
+                        message={message}
+                      />
+                     : (
+                      <MessageComponent 
+                        SelectedUser={SelectedUser}
+                        message={message}
+                      />
+                     )
+                   }
+                  </>
+                )) : (
+                  <div className="SelectedComponent" >
+                    <p className="SelectChat" >
+                     No Message for Now , be the first . 
+                    </p>
+                  </div>
+                )
               }
             </div>
           </div>
           <div className="UserMessageComponent" >
-          <form className="MessageForm" action="" >
+          {
+              UploadedImagesToggle && (
+                <div className="ImagesContainer" >
+                  <div className="ImagesHolderInfo" >
+                  <div className="ImageUserHolder" >
+                    <div className="ImagesHodler" >
+                      {UploadedImages.map(image => (
+                        <div className="ImageHolder" key={image}>
+                        <div className="ImageSettings" >
+                          <div className="ImageItem" >
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g opacity="0.7">
+                            <path d="M11.677 4.38444L15.613 8.32044L7.57506 16.359C7.36997 16.5641 7.12323 16.7217 6.85236 16.8215L6.68708 16.8744L2.63211 17.9803C2.28552 18.0748 1.96546 17.7862 2.00301 17.4457L2.01817 17.3663L3.12407 13.3113C3.20039 13.0315 3.33646 12.7723 3.52212 12.5513L3.63939 12.4234L11.677 4.38444ZM13.2452 2.81755C14.332 1.73074 16.0941 1.73074 17.1809 2.81755C18.2224 3.85907 18.2658 5.52075 17.3111 6.61395L17.1809 6.75322L16.32 7.61344L12.384 3.67744L13.2452 2.81755Z" fill="white"/>
+                            </g>
+                          </svg>
+                          </div>
+                          <div className="ImageItem"
+                            onClick={()=>RemoveImage(image)}
+                          >
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g opacity="0.7">
+                            <path d="M10 1.25C11.4346 1.25 12.6126 2.34848 12.7388 3.75019L17 3.75C17.4142 3.75 17.75 4.08579 17.75 4.5C17.75 4.8797 17.4678 5.19349 17.1018 5.24315L17 5.25H16.417L15.1499 16.2292C15.0335 17.2384 14.179 18 13.1631 18H6.83688C5.821 18 4.9665 17.2384 4.85006 16.2292L3.582 5.25H3C2.6203 5.25 2.30651 4.96785 2.25685 4.60177L2.25 4.5C2.25 4.1203 2.53215 3.80651 2.89823 3.75685L3 3.75L7.26119 3.75019C7.38741 2.34848 8.56542 1.25 10 1.25ZM8.5 7.5C8.25454 7.5 8.05039 7.65477 8.00806 7.85886L8 7.9375V14.0625L8.00806 14.1411C8.05039 14.3452 8.25454 14.5 8.5 14.5C8.74546 14.5 8.94961 14.3452 8.99194 14.1411L9 14.0625V7.9375L8.99194 7.85886C8.94961 7.65477 8.74546 7.5 8.5 7.5ZM11.5 7.5C11.2545 7.5 11.0504 7.65477 11.0081 7.85886L11 7.9375V14.0625L11.0081 14.1411C11.0504 14.3452 11.2545 14.5 11.5 14.5C11.7455 14.5 11.9496 14.3452 11.9919 14.1411L12 14.0625V7.9375L11.9919 7.85886C11.9496 7.65477 11.7455 7.5 11.5 7.5ZM10 2.75C9.39524 2.75 8.89079 3.17947 8.77499 3.75005H11.225C11.1092 3.17947 10.6048 2.75 10 2.75Z" fill="white"/>
+                            </g>
+                          </svg>
+                          </div>
+                        </div>
+                        <img className="UploadedImage" src={image} alt='UploadedImage' />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                </div>
+              )
+            }
+          <form className="MessageForm" action="" 
+           onKeyDown={SendMessageVerification}
+          >
             <div className="UserFilesWithMessaging" >
               <label className="MessageOption" >
                 <input type="file" className="FilesInput"
+                onChange={ImageUploading}
                 accept="image/png, image/jpg, image/gif, image/jpeg"
                 id="file" />
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -189,15 +265,10 @@ export const MessagingRoom = () => {
                 </svg>
               </label>
               <input type="text" className="MessageInput" placeholder="Write a message..." 
-                onKeyDown={(event)=>{
-                 if(event.key === 'Enter'){
-                   event.preventDefault();
-                   handleUserMessage()
-                 }
-                }}
+                required
                 onChange={(e)=>{
                   e.preventDefault();
-                  if(e.target.value !== '' || null ){
+                  if(e.target.value !== '' || null  ){
                     SetUserMessage(e.target.value);
                   }
                 }}
@@ -206,13 +277,13 @@ export const MessagingRoom = () => {
               <div className="EmojiHolderWithVocal" >
                 <div className="MessageOption" >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12.0001 1.99902C17.5238 1.99902 22.0016 6.47687 22.0016 12.0006C22.0016 17.5243 17.5238 22.0021 12.0001 22.0021C6.47638 22.0021 1.99854 17.5243 1.99854 12.0006C1.99854 6.47687 6.47638 1.99902 12.0001 1.99902ZM12.0001 3.49902C7.30481 3.49902 3.49854 7.3053 3.49854 12.0006C3.49854 16.6959 7.30481 20.5021 12.0001 20.5021C16.6954 20.5021 20.5016 16.6959 20.5016 12.0006C20.5016 7.3053 16.6954 3.49902 12.0001 3.49902ZM8.46183 14.7839C9.31096 15.8616 10.602 16.5021 12.0001 16.5021C13.3963 16.5021 14.6858 15.8633 15.535 14.7881C15.7918 14.463 16.2634 14.4076 16.5884 14.6644C16.9135 14.9211 16.9689 15.3927 16.7122 15.7178C15.5814 17.1495 13.8602 18.0021 12.0001 18.0021C10.1374 18.0021 8.4142 17.1472 7.2836 15.7122C7.02725 15.3869 7.08319 14.9153 7.40855 14.6589C7.73391 14.4026 8.20548 14.4585 8.46183 14.7839ZM9.00053 8.75121C9.6905 8.75121 10.2498 9.31054 10.2498 10.0005C10.2498 10.6905 9.6905 11.2498 9.00053 11.2498C8.31057 11.2498 7.75124 10.6905 7.75124 10.0005C7.75124 9.31054 8.31057 8.75121 9.00053 8.75121ZM15.0005 8.75121C15.6905 8.75121 16.2498 9.31054 16.2498 10.0005C16.2498 10.6905 15.6905 11.2498 15.0005 11.2498C14.3106 11.2498 13.7512 10.6905 13.7512 10.0005C13.7512 9.31054 14.3106 8.75121 15.0005 8.75121Z" fill="#8A8A8A"/>
+                   <path d="M12.0001 1.99902C17.5238 1.99902 22.0016 6.47687 22.0016 12.0006C22.0016 17.5243 17.5238 22.0021 12.0001 22.0021C6.47638 22.0021 1.99854 17.5243 1.99854 12.0006C1.99854 6.47687 6.47638 1.99902 12.0001 1.99902ZM12.0001 3.49902C7.30481 3.49902 3.49854 7.3053 3.49854 12.0006C3.49854 16.6959 7.30481 20.5021 12.0001 20.5021C16.6954 20.5021 20.5016 16.6959 20.5016 12.0006C20.5016 7.3053 16.6954 3.49902 12.0001 3.49902ZM8.46183 14.7839C9.31096 15.8616 10.602 16.5021 12.0001 16.5021C13.3963 16.5021 14.6858 15.8633 15.535 14.7881C15.7918 14.463 16.2634 14.4076 16.5884 14.6644C16.9135 14.9211 16.9689 15.3927 16.7122 15.7178C15.5814 17.1495 13.8602 18.0021 12.0001 18.0021C10.1374 18.0021 8.4142 17.1472 7.2836 15.7122C7.02725 15.3869 7.08319 14.9153 7.40855 14.6589C7.73391 14.4026 8.20548 14.4585 8.46183 14.7839ZM9.00053 8.75121C9.6905 8.75121 10.2498 9.31054 10.2498 10.0005C10.2498 10.6905 9.6905 11.2498 9.00053 11.2498C8.31057 11.2498 7.75124 10.6905 7.75124 10.0005C7.75124 9.31054 8.31057 8.75121 9.00053 8.75121ZM15.0005 8.75121C15.6905 8.75121 16.2498 9.31054 16.2498 10.0005C16.2498 10.6905 15.6905 11.2498 15.0005 11.2498C14.3106 11.2498 13.7512 10.6905 13.7512 10.0005C13.7512 9.31054 14.3106 8.75121 15.0005 8.75121Z" fill="#8A8A8A"/>
                   </svg>
                 </div>
-                <div className="MessageOption" >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18.25 11C18.6297 11 18.9435 11.2822 18.9932 11.6482L19 11.75V12.25C19 15.8094 16.245 18.7254 12.751 18.9817L12.75 21.25C12.75 21.6642 12.4142 22 12 22C11.6203 22 11.3065 21.7178 11.2568 21.3518L11.25 21.25L11.25 18.9818C7.83323 18.7316 5.12283 15.938 5.00406 12.4863L5 12.25V11.75C5 11.3358 5.33579 11 5.75 11C6.1297 11 6.44349 11.2822 6.49315 11.6482L6.5 11.75V12.25C6.5 15.077 8.73445 17.3821 11.5336 17.4956L11.75 17.5H12.25C15.077 17.5 17.3821 15.2656 17.4956 12.4664L17.5 12.25V11.75C17.5 11.3358 17.8358 11 18.25 11ZM12 2C14.2091 2 16 3.79086 16 6V12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12V6C8 3.79086 9.79086 2 12 2ZM12 3.5C10.6193 3.5 9.5 4.61929 9.5 6V12C9.5 13.3807 10.6193 14.5 12 14.5C13.3807 14.5 14.5 13.3807 14.5 12V6C14.5 4.61929 13.3807 3.5 12 3.5Z" fill="#8A8A8A"/>
-                  </svg>
+                <div className="MessageOption" id={SelectedMessageComponent.id} >
+                 {
+                  SelectedMessageComponent.Svg
+                 }
                 </div>
               </div>
             </form>

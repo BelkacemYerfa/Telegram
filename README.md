@@ -2,7 +2,7 @@
 
 Telegram-Clone is a web-chat-application
 
-![Telegram-Clone](./src/images/Cover.png)
+![Telegram-Clone](./src/assets/Cover.png)
 
 
 ## 🎯 Main Features

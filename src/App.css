@@ -33,7 +33,7 @@
   @apply flex items-center justify-center 
  }
  .Icon{
-  @apply group-focus:stroke-ChatOptionsHoverBg !important
+  @apply stroke-[#868686] group-focus:stroke-ChatOptionsHoverBg !important
  }
  .ChatGPTPic{
   @apply h-9 w-9 rounded !important
@@ -42,13 +42,24 @@
   @apply flex w-full !important
  }
  .ChatBody{
-  @apply fill-white h-[100vh] w-[40%] bg-UserListBg/80 text-white font-semibold px-[19.5px] py-[15.5px]
+  @apply hidden sm:block absolute sm:relative left-0 top-0 w-full sm:w-[60%] md:w-[40%] fill-white h-[100vh]  
+  bg-UserListBg/80 text-white font-semibold px-[19.5px] py-[15.5px] !important
  }
  .ChatTitle{
-  @apply flex w-fit justify-center gap-x-[13.5px]
+  @apply flex items-center justify-between w-full 
+ }
+ .ToggleHolder{
+  @apply flex w-fit justify-center gap-x-[13.5px] !important
+ }
+ .UserList{
+  @apply max-h-full overflow-y-scroll !important 
  }
  .Menu{
-  @apply sticky left-0 cursor-pointer
+  @apply hidden md:flex items-center justify-center sticky left-0 cursor-pointer
+  duration-200 ease-in-out hover:bg-SearchInputBg/20 rounded
+ }
+ .CloseToggle{
+  @apply flex sm:hidden
  }
  .SearchForm{
   @apply flex w-full justify-center px-[11px] py-[5px] 
@@ -117,7 +128,7 @@
 
  /* chat messaging component */
  .ChatRoom{
-  @apply bg-UserListBg/80 flex flex-col h-full 
+  @apply w-full relative bg-UserListBg/80 flex flex-col h-full 
   text-white font-medium !important
  }
  .SelectedComponent{
@@ -130,7 +141,7 @@
   text-sm !important
  }
  .ChatMessaginComponent{
-  @apply w-full
+  @apply w-full 
  }
  .ChatRoomDetails{
   @apply w-full flex justify-between items-center
@@ -165,7 +176,7 @@
   @apply flex-1
  }
  .UserMessageComponent{
-  @apply w-full pb-[14px] px-[45px] !important
+  @apply relative w-full pb-[14px] px-[45px] !important
  }
  .MessageForm{
   @apply flex items-center justify-between w-full rounded-lg
@@ -204,14 +215,20 @@
   font-normal !important
  }
  .MessageComponentUser{
-  @apply w-full flex justify-end items-end gap-x-[7px] !important
+  @apply relative w-full flex justify-end items-end gap-x-[7px] !important
  }
  .MessageComponentUserFriend{
-  @apply w-full flex justify-start items-end gap-x-[7px] !important
+  @apply relative w-full flex justify-start items-end gap-x-[7px] !important
  }
  .UserMessage{
-  @apply cursor-pointer max-w-[70%] flex items-end 
-  gap-x-2 bg-UserMessageBg py-[10px] px-2
+  @apply cursor-pointer max-w-[70%] flex
+  gap-y-[1px] flex-col bg-UserMessageBg py-[10px] px-2
+ }
+ .UserRank{
+  @apply text-[12px] font-semibold !important
+ }
+ .UserMessageInfo{
+  @apply flex gap-x-2 items-end 
  }
  .MessageInfo{
   @apply break-all !important
@@ -220,7 +237,96 @@
   @apply w-[15%] text-[12px] font-[350] text-[#A1AAB3]
  }
  .FriendUserMessage{
-  @apply cursor-pointer max-w-[70%] flex items-end 
-  gap-x-2 bg-UserFriendMessageBg py-[10px] px-2
+  @apply cursor-pointer max-w-[70%] flex 
+  gap-y-[1px] flex-col bg-UserFriendMessageBg py-[10px] px-2
+ }
+
+ /*Message Drop Down*/
+ .MessageDropDown{
+  @apply z-20 absolute top-0 left-[32.23%] px-1 rounded-lg 
+  border border-solid border-black/20 bg-UserListBg/50
+  w-[35%] !important 
+ }
+ .MessageDropDownOtherUser{
+  @apply z-20 absolute top-0 right-[32.23%] px-1 rounded-lg 
+  border border-solid border-black/20 bg-UserListBg/50
+  w-[35%] !important 
+ }
+ .EmojiListReactiopn{
+  @apply h-14 w-[100%] flex items-center justify-center p-0
+  gap-x-[2px] border-b border-solid border-white/10 !important
+ }
+ .Emoji {
+  @apply h-[38px] w-[38px] rounded flex items-center justify-center
+  cursor-pointer hover:bg-SearchInputBg text-[20px] !important
+ }
+ .MessageSettings{
+  @apply max-h-[250px] py-1 flex flex-col w-full overflow-y-scroll !important
+ }
+ .MessageSettingsItem{
+  @apply flex items-center gap-x-[15px] px-[15px] py-[10px] rounded
+  duration-300 ease-in-out hover:bg-SearchInputBg cursor-pointer !important
+ }
+ .ReactedUsers{
+  @apply cursor-pointer w-full p-1
+  border-t border-solid border-white/10 !important
+ }
+ .ReactedUsersHeader{
+  @apply flex items-center w-full justify-between
+  px-[15px] py-2 duration-300 rounded
+  ease-in-out hover:bg-SearchInputBg
+ }
+ .ReactedUsersInfo{
+  @apply flex items-center gap-x-[15px]
+ }
+ .ReactedUsersPics{
+  @apply flex items-center 
+ }
+ .UserReactedImage{
+  @apply h-[30px] w-[30px] rounded-[50%] !important
+ }
+
+ /* Images Component */
+ .ImagesContainer{
+  @apply flex items-center justify-center !important
+ }
+ .ImagesHolderInfo{
+  @apply absolute bottom-16 rounded-t-lg
+  h-[200px] w-[88.5%] flex items-center bg-ChatOptionsBg !important
+ }
+ .ImageUserHolder{
+  @apply w-full
+ }
+ .ImagesHodler{
+  @apply relative p-[13px] flex items-center gap-[13px] 
+  flex-wrap overflow-y-scroll h-[200px] cursor-pointer
+  !important 
+ }
+ .ImageHolder{
+  @apply relative
+ }
+ .ImageSettings{
+  @apply absolute right-1 top-1 w-fit flex items-center
+  bg-SettingImageComponentBg border-none outline-none
+  backdrop-blur-[10px] rounded !important ; 
+ }
+ .ImageItem{
+  @apply flex items-center justify-center p-[7px] cursor-pointer
+  duration-300 ease-in-out hover:scale-[1.15] hover:bg-red-600 
+  border-none outline-none
+  rounded !important
+ }
+ .UploadedImage{
+  @apply h-[150px] w-auto rounded !important
+ }
+ .ImagesHolderSended{
+  @apply relative flex items-center gap-1 overflow-y-scroll
+  flex-wrap max-h-[400px] max-w-[50%]
+  !important
+ }
+ .TimeHolder{
+  @apply cursor-pointer absolute bottom-1 right-1 rounded-md
+  bg-MessageComponentBg px-[3px] py-[4px] text-[12px]
+  font-[350] !important
  }
 }

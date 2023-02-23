@@ -6,7 +6,7 @@ export let initialState = {
   uid : '111',
  } ,
  userFriends : [{
-  name: "リムル・テンペスト",
+  name: "Rimoro Tenpesto",
   profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" , 
   id: `${crypto.randomUUID()}`,
   OnlineStatus : false , 
@@ -24,20 +24,26 @@ export let initialState = {
  ] , 
  Messages : [{
   name : 'Bylka' ,
-  id : '111' ,
+  userId:'111',
+  id :`${crypto.randomUUID()}`  ,
   message : 'Hello , how are you buddy ?' ,
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
+  DropDown : false , 
+  userRank : 'Member',
  }, 
  {
   name : 'リムル・テンペスト' ,
+  userId : '222' ,
   id: `${crypto.randomUUID()}`,
   message : 'Hello , I am fine , and you ?' ,
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
- }
+  DropDown : false ,  
+  userRank : 'Member',
+}
 ]
  },
  {
@@ -59,20 +65,26 @@ export let initialState = {
  ],
  Messages : [{
   name : 'Bylka' ,
-  id : '111' ,
+  userId:'111',
+  id :`${crypto.randomUUID()}`  ,
   message : 'Hello , how are you buddy ?' ,
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
+  DropDown : false , 
+  userRank : 'Member',
  }, 
  {
   name : 'リムル・テンペスト' ,
+  userId : '222' , 
   id: `${crypto.randomUUID()}`,
   message : 'Hello , I am fine , and you ?' ,
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
- }
+  DropDown : false ,  
+  userRank : 'Member',
+}
 ]
  },
  {
@@ -94,19 +106,25 @@ export let initialState = {
  ],
  Messages : [{
   name : 'Bylka' ,
-  id : '111' ,
+  userId:'111',
+  id :`${crypto.randomUUID()}`  ,
   message : 'Hello , how are you buddy ?' ,
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
+  DropDown : false ,
+  userRank : 'Member',
  }, 
  {
   name : 'リムル・テンペスト' ,
+  userId:'222',
   id: `${crypto.randomUUID()}`,
   message : 'Hello , I am fine , and you ?' ,
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
+  DropDown : false ,
+  userRank : 'Member',
  }
 ]
  },
@@ -117,8 +135,8 @@ export let initialState = {
   OnlineStatus : false ,
   Selected : false ,
   Members : [{
-   name: "リムル・テンペスト",
-   id: `${crypto.randomUUID()}`,
+   name: "Bylka",
+   id: '111',
    profilePic: "https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg" ,
   } ,
   {
@@ -134,20 +152,26 @@ export let initialState = {
  ],
  Messages : [{
   name : 'Bylka' ,
-  id : '111' ,
+  userId:'111',
+  id : `${crypto.randomUUID()}` ,
   message : 'Hello , how are you buddy ?' ,
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://wallpaperaccess.com/full/4595683.jpg' ,
+  DropDown : false , 
+  userRank : 'Admin',
  }, 
  {
   name : 'リムル・テンペスト' ,
+  userId:'222',
   id: `${crypto.randomUUID()}`,
   message : 'Hello , I am fine , and you ?' ,
   time : `${new Date().getHours()}` ,
   timeMinutes : `${new Date().getMinutes()}` ,
   profilePic : 'https://i.pinimg.com/originals/4f/3c/76/4f3c7690241a8956f82c3611afeae4a0.jpg' ,
- }
+  DropDown : false , 
+  userRank : 'Member',
+ },
 ]
  }
 ]
@@ -165,6 +189,18 @@ export const reducer = (state , action)=>{
     userFriends : action.userFriends
    }
    case 'SET_USER_FRIENDS' : return {
+    ...state ,
+    userFriends : action.userFriends
+   }
+   case 'SET_DROPDOWN' : return {
+    ...state ,
+    userFriends : action.userFriends
+   }
+   case 'REMOVE_MESSAGE' : return {
+    ...state ,
+    userFriends : action.userFriends
+   }
+   case 'EDIT_MESSAGE' : return {
     ...state ,
     userFriends : action.userFriends
    }
