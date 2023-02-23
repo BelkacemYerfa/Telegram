@@ -2,7 +2,8 @@ import { UserList } from "../UserToChatSection/UserList"
 import { MessagingRoom } from "../MessaginRoom/MessaginRoom";
 
 export const ChatComponent = ({
-  handleToggle
+  handleToggle , 
+  need
 }) => {
 
   const handleToggleNavBar = (toggle)=>{
@@ -12,8 +13,9 @@ export const ChatComponent = ({
  return (
   <div className="Chat" >
    <div className='ChatBody'>
-     <UserList 
+     <UserList  
       handleToggle={handleToggleNavBar}
+      need={need}
      />
    </div>
    <div className="ChatMessaginComponent" >

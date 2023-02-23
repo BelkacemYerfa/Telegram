@@ -23,7 +23,7 @@ module.exports = {
         MessageComponentBg : 'rgba(0, 0, 0, 0.3)',
       } , 
       backgroundImage : {
-        bannerImage : 'url(https://4kwallpapers.com/images/wallpapers/windows-11-dark-mode-blue-stock-official-3840x2400-5630.jpg)'
+        bannerImage : 'url(C:/Users/MON HP/Desktop/systemos/src/assets/img21.png)'
       } , 
       visibility: ["group-hover"],
     },

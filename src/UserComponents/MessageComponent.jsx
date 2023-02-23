@@ -54,23 +54,38 @@ export const MessageComponent = ({
             ? "14px 14px 4px 14px" : "14px 4px 4px 14px" : "14px 4px 14px 14px"
            }}
           >
-            <div className="MessageInfo" >
-              {message?.message}
-            </div>
-            <div className="MessageTime">
-              {
-                message?.time > 12 
-                ? `${Number(message?.time) - 12}:${
-                  message?.timeMinutes < 10 ? 
-                  `0${message?.timeMinutes}`
-                  : message?.timeMinutes 
-                }PM` 
-                : `${Number(message?.time)}:${
-                  message?.timeMinutes < 10 ? 
-                  `0${message?.timeMinutes}`
-                  : message?.timeMinutes 
-                }AM`
-              }
+            {
+              SelectedUser?.Members?.length > 2 ? (
+                <div className="UserRank" >
+                  <p className="Rank" 
+                  style={{
+                    color : message?.userRank === "Admin" ? "#C8504F" : "#7B61FF"
+                  }}
+                  >
+                    {message?.name}
+                  </p>
+                </div>
+              ) : null
+            }
+            <div className="UserMessageInfo" >
+              <p className="MessageInfo" >
+                {message?.message}
+              </p>
+              <div className="MessageTime">
+                {
+                  message?.time > 12 
+                  ? `${Number(message?.time) - 12}:${
+                    message?.timeMinutes < 10 ? 
+                    `0${message?.timeMinutes}`
+                    : message?.timeMinutes 
+                  }PM` 
+                  : `${Number(message?.time)}:${
+                    message?.timeMinutes < 10 ? 
+                    `0${message?.timeMinutes}`
+                    : message?.timeMinutes 
+                  }AM`
+                }
+              </div>
             </div>
           </div>
       ) :(
