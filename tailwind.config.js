@@ -23,7 +23,7 @@ module.exports = {
         MessageComponentBg : 'rgba(0, 0, 0, 0.3)',
       } , 
       backgroundImage : {
-        bannerImage : 'url(C:/Users/MON HP/Desktop/systemos/src/assets/img21.png)'
+        bannerImage : 'url(C:/Users/MON HP/Desktop/systemos/src/assets/thumb-1920-1152265 2.png)'
       } , 
       visibility: ["group-hover"],
     },
